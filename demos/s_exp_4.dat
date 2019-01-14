@@ -1,0 +1,37 @@
+# Calculation inputs.
+#
+# Example 7.5 (chapter 7)
+#
+
+system = stacking
+
+length = 100E-3     # m
+width = 25E-3       # m
+
+rotate_deg = 30 / -30 / 0 / 0 / -30 / 30
+thickness = -0.45E-3 / -0.30E-3 / -0.15E-3 / 0 / 0.15E-3 / 0.30E-3 / 0.45E-3    # m
+
+# Note:
+# The load here (represent 'stress') is different from
+# load in system = bulk or laminate (represent 'force').
+
+x_normal_load = unknown  # N/m2
+y_normal_load = unknown  # N/m2
+xy_shear_load = unknown # N
+
+x_normal_strain = 0
+y_normal_strain = 0
+xy_shear_strain = 0
+
+x_bending_moment = unknown   # N/m
+y_bending_moment = unknown   # N/m
+xy_twisting_moment = unknown # N/m
+
+x_surface_curvature = 0    # 1/m
+y_surface_curvature = 0    # 1/m
+xy_twisting_curvature = 0  # 1/m
+
+
+constrain_x = False
+constrain_y = False
+constrain_z = False

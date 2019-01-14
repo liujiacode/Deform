@@ -1,0 +1,35 @@
+# Calculation inputs.
+#
+# Example 5.1 (c)
+#
+
+system = laim
+
+length = 100E-3     # m
+width = 25E-3       # m
+thickness = 4E-3    # m
+
+x_normal_load = 1E4  # N
+y_normal_load = 0    # N
+z_normal_load = 0    # N
+
+x_normal_strain = unknown
+y_normal_strain = unknown
+z_normal_strain = unknown
+
+yz_shear_load = 0 # N
+xz_shear_load = 0 # N
+xy_shear_load = 0 # N
+
+yz_shear_strain = unknown
+xz_shear_strain = unknown
+xy_shear_strain = unknown
+
+constrain_x = False
+constrain_y = False
+constrain_z = False
+
+rotate_deg = 30
+
+delta_thm = 0
+delta_moi = 0
