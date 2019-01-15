@@ -1,0 +1,64 @@
+# Calculation inputs.
+#
+
+# 
+# Global definitions.
+# 
+system = bulk
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+rotate_deg = 0
+
+# 
+# The unit of load is N when system is bulk or laminate (representing foreces),
+# while it is N/m when system is stacking (representing forces).
+# 
+# The z strains would be ignored when system is laminate.
+#
+x_normal_load = 1E4  # N or N/m
+y_normal_load = 0    # N or N/m
+z_normal_load = 0    # N or N/m
+
+x_normal_strain = unknown
+y_normal_strain = unknown
+z_normal_strain = unknown
+
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N
+
+yz_shear_strain = unknown
+xz_shear_strain = unknown
+xy_shear_strain = unknown
+
+# 
+# For stacking system.
+# These variables wouldn't work when system is bulk or laminate.
+# 
+# x_bending_moment   = unknown  # N
+# y_bending_moment   = unknown  # N
+# xy_twisting_moment = unknown  # N
+# 
+# x_surface_curvature   = 0  # 1/m
+# y_surface_curvature   = 0  # 1/m
+# xy_twisting_curvature = 0  # 1/m
+
+# 
+# Constrain conditions here.
+# These variables may not work well when system is stacking.
+# Recommend False in stacking system.
+# 
+# constrain_x = False
+# constrain_y = False
+# constrain_z = False
+
+# 
+# External conditions here.
+# These variables wouldn't work when system is stacking.
+# Recommend 0 in stacking system.
+# 
+# delta_thm = 0
+# delta_moi = 0

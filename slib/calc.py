@@ -23,13 +23,19 @@ class Calc(object):
         
         self.material = "material.dat"
         self.system = "b"
-        self.mission = []
-
         self.lay_up_sequence = None
         
         self.x_normal_load = Symbol("x_nl")
         self.y_normal_load = Symbol("y_nl")
         self.z_normal_load = Symbol("z_nl")
+
+        self.x_normal_stress = Symbol("x_nr")
+        self.y_normal_stress = Symbol("y_nr")
+        self.z_normal_stress = Symbol("z_nr")
+        
+        self.yz_shear_stress = Symbol("yz_sr")
+        self.xz_shear_stress = Symbol("xz_sr")
+        self.xy_shear_stress = Symbol("xy_sr")
         
         self.x_normal_strain = Symbol("x_ns")
         self.y_normal_strain = Symbol("y_ns")
@@ -115,6 +121,26 @@ class Calc(object):
                 if isinstance(self._N_or_n(value), (int, float)):
                     self.z_normal_strain = self._N_or_n(value)
             
+            elif variable == "x_normal_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.x_normal_stress = self._N_or_n(value)
+            elif variable == "y_normal_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.y_normal_stress = self._N_or_n(value)
+            elif variable == "z_normal_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.z_normal_stress = self._N_or_n(value)
+            
+            elif variable == "yz_shear_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.yz_shear_stress = self._N_or_n(value)
+            elif variable == "xz_shear_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.xz_shear_stress = self._N_or_n(value)
+            elif variable == "xy_shear_stress":
+                if isinstance(self._N_or_n(value), (int, float)):
+                    self.xy_shear_stress = self._N_or_n(value)
+            
             elif variable in ("yz_shear_load", "zy_shear_load"):
                 if isinstance(self._N_or_n(value), (int, float)):
                     self.yz_shear_load = self._N_or_n(value)
@@ -198,17 +224,17 @@ class Calc(object):
         # Constrain in directions.
         if self.constrain_x:
             print("Note: x direction is constrained.")
-            print("x strain refers to zero.")
+            print("x strain is zero.")
             self.x_normal_strain = 0
             self.x_normal_load = Symbol("x_nl")
         if self.constrain_y:
             print("Note: y direction is constrained.")
-            print("y strain refers to zero.")
+            print("y strain is zero.")
             self.y_normal_strain = 0
             self.y_normal_load = Symbol("y_nl")
         if self.constrain_z:
             print("Note: z direction is constrained.")
-            print("z strain refers to zero.")
+            print("z strain is zero.")
             self.z_normal_strain = 0
             self.z_normal_load = Symbol("z_nl")
 
@@ -218,7 +244,7 @@ class Calc(object):
         
         if self.system == "l":
             print("Note: plane stress and strain conditions are used.")
-            print("z loads and strains refer to zero (not considered).")
+            print("z strains are zeros (not considered).")
             self.z_normal_strain = 0
             self.yz_shear_strain = 0
             self.xz_shear_strain = 0
@@ -227,13 +253,13 @@ class Calc(object):
         
         if self.system == "s":
             print("Note: classical lamination theory and Kickhoff hypothesis are used.")
-            print("z stresses and strains refer to zero (not considered).")
+            print("z strains are zeros (not considered).")
             self.z_normal_strain = 0
             self.yz_shear_strain = 0
             self.xz_shear_strain = 0
             self.yz_shear_load = 0
             self.xz_shear_load = 0
-            print("thm and moi refer to zero (not considered).")
+            print("delta thm and moi are zeros (not considered).")
             self.delta_moi = 0
             self.delta_thm = 0
 

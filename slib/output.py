@@ -23,15 +23,15 @@ class Output(object):
     
     def title(self, info):
         with open(self._file, "a") as f:
-            f.write("[> ===== ===== ===== {} ===== ===== ===== <]\n".format(info[0].upper() + info[1:]))
+            f.write("===== ===== ===== ===== {} ===== ===== ===== =====\n".format(info[0].upper() + info[1:]))
     
     def section(self, info):
         with open(self._file, "a") as f:
-            f.write("----- ----- {} ----- -----\n".format(info[0].upper() + info[1:]))
+            f.write("=== === {} === ===\n".format(info[0].upper() + info[1:]))
     
     def part(self, info):
         with open(self._file, "a") as f:
-            f.write("-- -- {} -- --\n".format(info[0].upper() + info[1:]))
+            f.write("Pr) {}\n".format(info[0].upper() + info[1:]))
 
     def text(self, info, end="\n"):
         with open(self._file, "a") as f:
@@ -44,8 +44,13 @@ class Output(object):
             for i in range(s[0]):
                 f.write("[")
                 for j in range(s[1]):
-                    if m[i][j] < 0:
-                        f.write("{:.3E}   ".format(m[i][j]))
+                    fmt = "{:.3E}".format(m[i][j])
+                    if fmt[0] == "-":
+                        f.write("{}   ".format(fmt))
                     else:
-                        f.write(" {:.3E}   ".format(m[i][j]))
+                        f.write(" {}   ".format(fmt))
                 f.write("]\n")
+
+    def draft(self, info):
+        with open(self._file, "a") as f:
+            f.write("--- -- - {} - -- ---\n".format(info[0].upper() + info[1:]))
