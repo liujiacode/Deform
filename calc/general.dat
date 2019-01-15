@@ -20,7 +20,11 @@ rotate_deg = 0
 #
 x_normal_load = 1E4  # N or N/m
 y_normal_load = 0    # N or N/m
-z_normal_load = 0    # N or N/m
+z_normal_load = 0    # N
+
+x_normal_stress = unknown # Pa
+y_normal_stress = unknown # Pa
+z_normal_stress = unknown # Pa
 
 x_normal_strain = unknown
 y_normal_strain = unknown
@@ -28,7 +32,11 @@ z_normal_strain = unknown
 
 yz_shear_load = 0  # N
 xz_shear_load = 0  # N
-xy_shear_load = 0  # N
+xy_shear_load = 0  # N or N/m
+
+yz_shear_stress = unknown # Pa
+xz_shear_stress = unknown # Pa
+xy_shear_stress = unknown # Pa
 
 yz_shear_strain = unknown
 xz_shear_strain = unknown

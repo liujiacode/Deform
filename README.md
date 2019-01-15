@@ -14,6 +14,7 @@ python 3.6 or later
 
 ## Update
 * v1.0.0: Initialization.
+* v1.1.0: Add loads.
 
 ## Author
 Liu Jia
