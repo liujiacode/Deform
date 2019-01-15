@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Running deformation calc.
 #
-# Version 1.1.0
+# Version 1.1.1
 # 2019.01.15
 #
 # Author: Liu Jia
@@ -60,13 +60,22 @@ def solve_trS_matrix(c, m, op):
         op.text("delta_M = {} C;".format(c.delta_moi))
         op.text("")
 
+    op.part("reduced S_matrix (Pa)")
+    rS_matrix = m.get_reduced_S_matrix()
+    op.matrix(rS_matrix)
+    op.text("")
+    op.part("reduced Q_matrix (1/Pa)")
+    rQ_matrix = m.get_reduced_Q_matrix()
+    op.matrix(rQ_matrix)
+    op.text("")
+
     op.part("transformed reduced S_matrix (Pa)")
     trS_matrix = m.get_trans_reduced_S_matrix(rotate_deg = c.rotate_deg)
     op.matrix(trS_matrix)
     op.text("")
-    op.part("transformed reduced C_matrix (1/Pa)")
-    trC_matrix = m.get_trans_reduced_C_matrix(rotate_deg = c.rotate_deg)
-    op.matrix(trC_matrix)
+    op.part("transformed reduced Q_matrix (1/Pa)")
+    trQ_matrix = m.get_trans_reduced_Q_matrix(rotate_deg = c.rotate_deg)
+    op.matrix(trQ_matrix)
     op.text("")
 
     op.section("solution")
