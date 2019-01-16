@@ -2,7 +2,7 @@
 This is a script used to compute composite material properties.
 
 # Version
-1.2.1 (2019.01.16).
+1.3.0 (2019.01.16).
 
 ## Installization
 python 3.6 or later.
