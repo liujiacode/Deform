@@ -2,7 +2,7 @@
 This is a script used to compute composite material properties.
 
 # Version
-1.3.0 (2019.01.16).
+1.3.1 (2019.01.16).
 
 ## Installization
 python 3.6 or later.
@@ -18,6 +18,7 @@ python 3.6 or later.
 * v1.2.0: Fix solve machine. (2019.01.16)
 * v1.2.1: Add demos. (2019.01.16)
 * v1.3.0: Define thickness of each layer. (2019.01.16)
+* v1.3.1: Update demo. (2019.01.16)
 
 ## Author
 Liu Jia
