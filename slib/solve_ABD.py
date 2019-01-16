@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Running deformation calc.
 #
-# Version 1.1.0
+# Version 1.2.0
 # 2019.01.15
 #
 # Author: Liu Jia
@@ -64,15 +64,18 @@ def solve_ABD_matrix(c, m, op):
     op.section("solution")
     # solution 1.
     op.part("solve load vs stress")
-    integ_z = c.thickness[-1] - c.thickness[-1]
-    op.text("integrate(z) = {}.".format(integ_z))
+    integ_z1 = c.thickness[-1] - c.thickness[0]
+    integ_z2 = 1 / 2 * (c.thickness[-1] ** 2 - c.thickness[0] ** 2 )
+    op.text("integrate1(z) = {}.".format(integ_z1))
+    op.text("integrate2(z) = {}.".format(integ_z2))
+    op.text("")
 
-    load_1 = Matrix([[c.x_normal_stress * (integ_z)     ],
-                     [c.y_normal_stress * (integ_z)     ],
-                     [c.xy_shear_stress * (integ_z)     ],
-                     [c.x_normal_stress * (integ_z) ** 2],
-                     [c.y_normal_stress * (integ_z) ** 2],
-                     [c.xy_shear_stress * (integ_z) ** 2],])
+    load_1 = Matrix([[c.x_normal_stress * (integ_z1)],
+                     [c.y_normal_stress * (integ_z1)],
+                     [c.xy_shear_stress * (integ_z1)],
+                     [c.x_normal_stress * (integ_z2)],
+                     [c.y_normal_stress * (integ_z2)],
+                     [c.xy_shear_stress * (integ_z2)],])
     
     load_2 = Matrix([[c.x_normal_load     ],
                      [c.y_normal_load     ],
@@ -86,9 +89,13 @@ def solve_ABD_matrix(c, m, op):
         op.text("{} = {};".format(i, solution[i]))
     op.text("")
 
-    x_nl = c.x_normal_load if isinstance(c.x_normal_load, (int, float)) else solution[c.x_normal_load]
-    y_nl = c.y_normal_load if isinstance(c.y_normal_load, (int, float)) else solution[c.y_normal_load]
-    xy_sl = c.xy_shear_load if isinstance(c.xy_shear_load, (int, float)) else solution[c.xy_shear_load]
+    # x_nl = c.x_normal_load if isinstance(c.x_normal_load, (int, float)) else solution[c.x_normal_load]
+    # y_nl = c.y_normal_load if isinstance(c.y_normal_load, (int, float)) else solution[c.y_normal_load]
+    # xy_sl = c.xy_shear_load if isinstance(c.xy_shear_load, (int, float)) else solution[c.xy_shear_load]
+
+    x_nl = solution[c.x_normal_load] if c.x_normal_load in solution else c.x_normal_load
+    y_nl = solution[c.y_normal_load] if c.y_normal_load in solution else c.y_normal_load
+    xy_sl = solution[c.xy_shear_load] if c.xy_shear_load in solution else c.xy_shear_load
     
     op.part("normal load resultants")
     op.text("N_x = {} N/m;".format(x_nl), end=" ")
@@ -96,9 +103,13 @@ def solve_ABD_matrix(c, m, op):
     op.text("N_xy = {} N/m;".format(xy_sl))
     op.text("")
 
-    x_bm = c.x_bending_moment if isinstance(c.x_bending_moment, (int, float)) else solution[c.x_bending_moment]
-    y_bm = c.y_bending_moment if isinstance(c.y_bending_moment, (int, float)) else solution[c.y_bending_moment]
-    xy_tm = c.xy_twisting_moment if isinstance(c.xy_twisting_moment, (int, float)) else solution[c.xy_twisting_moment]
+    # x_bm = c.x_bending_moment if isinstance(c.x_bending_moment, (int, float)) else solution[c.x_bending_moment]
+    # y_bm = c.y_bending_moment if isinstance(c.y_bending_moment, (int, float)) else solution[c.y_bending_moment]
+    # xy_tm = c.xy_twisting_moment if isinstance(c.xy_twisting_moment, (int, float)) else solution[c.xy_twisting_moment]
+
+    x_bm = solution[c.x_bending_moment] if c.x_bending_moment in solution else c.x_bending_moment
+    y_bm = solution[c.y_bending_moment] if c.y_bending_moment in solution else c.y_bending_moment
+    xy_tm = solution[c.xy_twisting_moment] if c.xy_twisting_moment in solution else c.xy_twisting_moment
     
     op.part("bending moment resultants")
     op.text("M_x = {} N;".format(x_bm), end=" ")

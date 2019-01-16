@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Running deformation calc.
 #
-# Version 1.1.0
+# Version 1.2.0
 # 2019.01.15
 #
 # Author: Liu Jia
@@ -99,9 +99,13 @@ def solve_S_matrix(c, m, op):
         op.text("{} = {};".format(i, solution[i]))
     op.text("")
 
-    x_nr = c.x_normal_stress if isinstance(c.x_normal_stress, (int, float)) else solution[c.x_normal_stress]
-    y_nr = c.y_normal_stress if isinstance(c.y_normal_stress, (int, float)) else solution[c.y_normal_stress]
-    z_nr = c.z_normal_stress if isinstance(c.z_normal_stress, (int, float)) else solution[c.z_normal_stress]
+    # x_nr = c.x_normal_stress if isinstance(c.x_normal_stress, (int, float)) else solution[c.x_normal_stress]
+    # y_nr = c.y_normal_stress if isinstance(c.y_normal_stress, (int, float)) else solution[c.y_normal_stress]
+    # z_nr = c.z_normal_stress if isinstance(c.z_normal_stress, (int, float)) else solution[c.z_normal_stress]
+
+    x_nr = solution[c.x_normal_stress] if c.x_normal_stress in solution else c.x_normal_stress
+    y_nr = solution[c.y_normal_stress] if c.y_normal_stress in solution else c.y_normal_stress
+    z_nr = solution[c.z_normal_stress] if c.z_normal_stress in solution else c.z_normal_stress
     
     op.part("normal stresses")
     op.text("sigma_x = {} Pa;".format(x_nr), end=" ")
@@ -109,9 +113,13 @@ def solve_S_matrix(c, m, op):
     op.text("sigma_z = {} Pa;".format(z_nr))
     op.text("")
 
-    yz_sr = c.yz_shear_stress if isinstance(c.yz_shear_stress, (int, float)) else solution[c.yz_shear_stress]
-    xz_sr = c.xz_shear_stress if isinstance(c.xz_shear_stress, (int, float)) else solution[c.xz_shear_stress]
-    xy_sr = c.xy_shear_stress if isinstance(c.xy_shear_stress, (int, float)) else solution[c.xy_shear_stress]
+    # yz_sr = c.yz_shear_stress if isinstance(c.yz_shear_stress, (int, float)) else solution[c.yz_shear_stress]
+    # xz_sr = c.xz_shear_stress if isinstance(c.xz_shear_stress, (int, float)) else solution[c.xz_shear_stress]
+    # xy_sr = c.xy_shear_stress if isinstance(c.xy_shear_stress, (int, float)) else solution[c.xy_shear_stress]
+
+    yz_sr = solution[c.yz_shear_stress] if c.yz_shear_stress in solution else c.yz_shear_stress
+    xz_sr = solution[c.xz_shear_stress] if c.xz_shear_stress in solution else c.xz_shear_stress
+    xy_sr = solution[c.xy_shear_stress] if c.xy_shear_stress in solution else c.xy_shear_stress
 
     op.part("shear stresses")
     op.text("tau_yz = {} Pa;".format(yz_sr), end=" ")
