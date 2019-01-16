@@ -1,0 +1,31 @@
+# Calculation inputs.
+# 
+# Homework 5.
+# Question 1.
+# 
+# A laminate of graphite/epoxy composite(Vf = 60%) is oriented at 45 with respect
+# to the axis. Find the following engineering properties:
+# Ex, Ey,  , , Gxy
+# Check to see if reciprocity relation holds.
+# 
+
+#
+# E_x, E_y and other properties are contained in the transformed reduced S_matrix.
+# See output.dat line 46.
+# 
+
+system = laminate
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+rotate_deg = 45
+
+x_normal_load = 0    # N
+y_normal_load = 10E3 # N
+z_normal_load = 0    # N
+
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N

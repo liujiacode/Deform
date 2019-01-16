@@ -55,9 +55,9 @@ def solve_trS_matrix(c, m, op):
         op.text("")
     if c.delta_moi:
         op.part("moisture conditions")
-        op.text("beta_1 = {} 1/C;".format(m.beta_1), end=" ")
-        op.text("beta_2 = {} 1/C;".format(m.beta_2), end=" ")
-        op.text("delta_M = {} C;".format(c.delta_moi))
+        op.text("beta_1 = {} 1/%M;".format(m.beta_1), end=" ")
+        op.text("beta_2 = {} 1/%M;".format(m.beta_2), end=" ")
+        op.text("delta_M = {} %M;".format(c.delta_moi))
         op.text("")
 
     op.part("reduced S_matrix (Pa)")
@@ -80,7 +80,7 @@ def solve_trS_matrix(c, m, op):
 
     op.section("solution")
     # solution 1.
-    op.part("solve stress vs load")
+    op.part("first solve stress vs load")
     stress_1 = Matrix([[c.x_normal_load / (c.width     * c.thickness)],
                        [c.y_normal_load / (c.thickness * c.length   )],
                        [c.xy_shear_load / (c.length    * c.width    )],])
@@ -114,30 +114,30 @@ def solve_trS_matrix(c, m, op):
     op.text("")
 
     # solution 2.
-    op.part("solved strain vs stress")
+    op.part("then solved strain vs stress")
     strain = Matrix([[c.x_normal_strain - m.alpha_1 * c.delta_thm - m.beta_1 * c.delta_moi],
                      [c.y_normal_strain - m.alpha_2 * c.delta_thm - m.beta_2 * c.delta_moi],
                      [c.xy_shear_strain                                                   ],])
-    
+
     stress = Matrix([[x_nr],
                      [y_nr],
                      [xy_sr],])
-    
+
     solution = solve(Matrix(trS_matrix) * stress - strain)
-    
+
     for i in solution:
         op.text("{} = {};".format(i, solution[i]))
     op.text("")
 
-    x_ns = c.x_normal_strain if isinstance(c.x_normal_strain, (int, float)) else solution[c.x_normal_strain]
-    y_ns = c.y_normal_strain if isinstance(c.y_normal_strain, (int, float)) else solution[c.y_normal_strain]
+    x_ns = solution[c.x_normal_strain] if c.x_normal_strain in solution  else c.x_normal_strain 
+    y_ns = solution[c.y_normal_strain] if c.y_normal_strain in solution  else c.y_normal_strain 
     
     op.part("normal strains")
     op.text("epsilon_x = {};".format(x_ns), end=" ")
     op.text("epsilon_y = {};".format(y_ns))
     op.text("")
 
-    xy_ss = c.xy_shear_strain if isinstance(c.xy_shear_strain, (int, float)) else solution[c.xy_shear_strain]
+    xy_ss = solution[c.xy_shear_strain] if c.xy_shear_strain in solution else c.xy_shear_strain 
 
     op.part("shear strains")
     op.text("gamma_xy = {};".format(xy_ss))

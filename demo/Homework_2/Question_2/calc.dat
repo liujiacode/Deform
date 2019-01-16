@@ -1,0 +1,30 @@
+# Calculation inputs.
+# 
+# Homework 2.
+# Question 2.
+# 
+# The same laminate as above is subjected to the same loading but with its faces
+# constrained in the z direction, i.e.,  =0. Determine the new dimensions of the
+# laminate.
+# 
+
+system = bulk
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+constrain_z = True
+
+# 
+# constrain_z would set z_normal_load to unknown and set z_normal_strain to zero
+# automatically regardless of the fllowing setting of z_normal_load.
+# See output.dat line 59 and 70.
+#
+x_normal_load = 0    # N
+y_normal_load = 100  # N
+z_normal_load = 0    # N
+
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N

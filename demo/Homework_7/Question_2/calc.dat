@@ -1,16 +1,29 @@
 # Calculation inputs.
-#
+# 
+# Homework 7.
+# Question 1.
+# 
+# A glass/epoxy laminate with a lay up sequence of   having the dimensions of
+# L=100mm, w=25mm is subjected to a bending moment per unit length about the
+# y axis of Mx=20 N-m/m. Determine the distribution across the thickness of
+# the following:
+# ( h=0.15mm)
+# On-axis stresses
+# On-axis strains
+# 
 
 # 
 # Global definitions.
 # 
-system = bulk
+system = stacking
 
+# 
+# Define the z ticks of every layer.
 length    = 100E-3  # m
 width     = 25E-3   # m
-thickness = 4E-3    # m
+thickness = -0.3E-3 / -0.15E-3 / 0 / 0.15E-3 / 0.3E-3   # m
 
-rotate_deg = 0
+rotate_deg = 0 / 30 / -30 / 0
 
 # 
 # x_normal_load is corresponding to the load along 1 direction in bulk and laminate with theta = 0;
@@ -22,9 +35,9 @@ rotate_deg = 0
 # 
 # The z strains would be ignored when system is laminate.
 #
-x_normal_load = 1E4  # N or N/m
-y_normal_load = 0    # N or N/m
-z_normal_load = 0    # N
+x_normal_load = 0  # N or N/m
+y_normal_load = 0  # N or N/m
+z_normal_load = 0  # N
 
 x_normal_stress = unknown # Pa
 y_normal_stress = unknown # Pa
@@ -50,13 +63,13 @@ xy_shear_strain = unknown
 # For stacking system.
 # These variables wouldn't work when system is bulk or laminate.
 # 
-# x_bending_moment   = unknown  # Nm/m
-# y_bending_moment   = unknown  # Nm/m
-# xy_twisting_moment = unknown  # Nm/m
-# 
-# x_surface_curvature   = 0  # 1/m
-# y_surface_curvature   = 0  # 1/m
-# xy_twisting_curvature = 0  # 1/m
+x_bending_moment   = 20  # N
+y_bending_moment   = 0   # N
+xy_twisting_moment = 0   # N
+
+x_surface_curvature   = unknown  # 1/m
+y_surface_curvature   = unknown  # 1/m
+xy_twisting_curvature = unknown  # 1/m
 
 # 
 # Constrain conditions here.

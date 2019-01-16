@@ -1,0 +1,88 @@
+Deform info.
+
+Version 1.2.1
+Calculation start.
+
+===== ===== ===== ===== System ===== ===== ===== =====
+laminate.
+
+length    = 0.1 m;
+width     = 0.025 m;
+theta = 45.0 deg.
+
+===== ===== ===== ===== Solving transform reduced S matrix ===== ===== ===== =====
+=== === Knowns and unknowns === ===
+Pr) Normal strains
+epsilon_x = x_ns; epsilon_y = y_ns;
+
+Pr) Normal loads
+F_x = 0.0 N; F_y = 10000.0 N;
+
+Pr) Normal stresses
+sigma_x = x_nr Pa; sigma_y = y_nr Pa;
+
+Pr) Shear strains
+gamma_xy = 0.0;
+
+Pr) Shear loads
+F_xy = xy_ss N;
+
+Pr) Shear stresses
+tau_xy = xy_sr Pa;
+
+Pr) Rotate degree
+theta = 45.0 deg;
+
+Pr) Reduced S_matrix (Pa)
+[ 6.452E-12   -1.600E-12    0.000E+00   ]
+[-1.600E-12    8.264E-11    0.000E+00   ]
+[ 0.000E+00    0.000E+00    2.273E-10   ]
+
+Pr) Reduced Q_matrix (1/Pa)
+[ 1.557E+11    3.015E+09    0.000E+00   ]
+[ 3.015E+09    1.216E+10    0.000E+00   ]
+[ 0.000E+00    0.000E+00    4.400E+09   ]
+
+Pr) Transformed reduced S_matrix (Pa)
+[ 7.829E-11   -3.534E-11   -3.810E-11   ]
+[-3.534E-11    7.829E-11   -3.810E-11   ]
+[-3.810E-11   -3.810E-11    9.230E-11   ]
+
+Pr) Transformed reduced Q_matrix (1/Pa)
+[ 4.788E+10    3.908E+10    3.590E+10   ]
+[ 3.908E+10    4.788E+10    3.590E+10   ]
+[ 3.590E+10    3.590E+10    4.047E+10   ]
+
+=== === Solution === ===
+Pr) First solve stress vs load
+x_nr = 0.0;
+xy_sr = 0.0;
+y_nr = 25000000.0000000;
+
+Pr) Normal stresses
+sigma_x = 0.0 Pa; sigma_y = 25000000.0000000 Pa;
+
+Pr) Shear stresses
+tau_xy = 0.0 Pa;
+
+Pr) Then solved strain vs stress
+x_ns = -0.000883603039189550;
+xy_ss = -0.000952412689949346;
+y_ns = 0.00195730605171954;
+
+Pr) Normal strains
+epsilon_x = -0.000883603039189550; epsilon_y = 0.00195730605171954;
+
+Pr) Shear strains
+gamma_xy = -0.000952412689949346;
+
+===== ===== ===== ===== Final size ===== ===== ===== =====
+=== === Final length === ===
+length    = 0.0999116396960811 m;
+widht     = 0.0250489326512930 m;
+
+=== === Final angle === ===
+xy angle = 89.9454307725112 deg;
+
+===== ===== ===== ===== End ===== ===== ===== =====
+Have a nice day.

@@ -1,0 +1,31 @@
+# Calculation inputs.
+# 
+# Homework 6.
+# Question 1.
+# 
+# A glass/epoxy laminate with fibers oriented at 30  with the x axis
+# has the dimensions of L=100mm, w=25mm and 4mm. It is constrained in
+# the y direction by frictionless rollers and is subjected to the
+# following loads:
+# A load along the x direction of 10 kN
+# A temperature increase of  
+# Moisture absorption of  %
+# Find the stresses in the plate and its final configuration
+# 
+
+system = laminate
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+rotate_deg = 30
+
+constrain_y = True
+
+delta_moi = 0.3 # %M
+
+x_normal_load = 10E3 # N
+y_normal_load = 0    # N
+
+xy_shear_load = 0  # N

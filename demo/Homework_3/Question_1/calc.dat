@@ -1,0 +1,32 @@
+# Calculation inputs.
+# 
+# Homework 3.
+# Question 1.
+# 
+# A unidirectional laminate of glass/epoxy has the dimensions of 100 mm×25mm×4mm.
+# It absorb 3% moisture. The laminate is constrained along the 1 direction. Determine
+# the stress and final dimensions of the laminate. 
+# 
+
+system = bulk
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+delta_moi = 3 # %M
+
+constrain_x = True
+
+# 
+# constrain_x would set x_normal_load to unknown and set x_normal_strain to zero
+# automatically regardless of the fllowing setting of x_normal_load.
+# See output.dat line 62 and 73.
+#
+x_normal_load = 0    # N
+y_normal_load = 0    # N
+z_normal_load = 0    # N
+
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N

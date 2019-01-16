@@ -1,0 +1,21 @@
+# properties for material glass/epoxy.
+
+E_1 = 50.0E9  # Pa
+E_2 = 15.20E9 # Pa
+E_3 = 15.20E9 # Pa
+
+nu_23 = 0.428
+nu_13 = 0.254
+nu_12 = 0.254
+
+G_23 = 3.28E9 # Pa
+G_13 = 4.70E9 # Pa
+G_12 = 4.70E9 # Pa
+
+alpha_1 = 6.34E-6   # 1/C
+alpha_2 = 23.3E-6   # 1/C
+alpha_3 = 23.3E-6   # 1/C
+
+beta_1 = 434E-6  # %M
+beta_2 = 6320E-6 # %M
+beta_3 = 6320E-6 # %M

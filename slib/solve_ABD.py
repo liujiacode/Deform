@@ -33,9 +33,9 @@ def solve_ABD_matrix(c, m, op):
     op.text("N_xy = {} N/m;".format(c.xy_shear_load))
     op.text("")
     op.part("bending moment resultants")
-    op.text("M_x = {} N;".format(c.x_bending_moment), end=" ")
-    op.text("M_y = {} N;".format(c.y_bending_moment), end=" ")
-    op.text("M_xy = {} N;".format(c.xy_twisting_moment))
+    op.text("M_x = {} Nm/m;".format(c.x_bending_moment), end=" ")
+    op.text("M_y = {} Nm/m;".format(c.y_bending_moment), end=" ")
+    op.text("M_xy = {} Nm/m;".format(c.xy_twisting_moment))
     op.text("")
     op.part("strains")
     op.text("epsilon_x = {} Pa;".format(c.x_normal_strain), end=" ")
@@ -63,7 +63,7 @@ def solve_ABD_matrix(c, m, op):
 
     op.section("solution")
     # solution 1.
-    op.part("solve load vs stress")
+    op.part("first solve load vs stress")
     integ_z1 = c.thickness[-1] - c.thickness[0]
     integ_z2 = 1 / 2 * (c.thickness[-1] ** 2 - c.thickness[0] ** 2 )
     op.text("integrate1(z) = {}.".format(integ_z1))
@@ -112,13 +112,13 @@ def solve_ABD_matrix(c, m, op):
     xy_tm = solution[c.xy_twisting_moment] if c.xy_twisting_moment in solution else c.xy_twisting_moment
     
     op.part("bending moment resultants")
-    op.text("M_x = {} N;".format(x_bm), end=" ")
-    op.text("M_y = {} N;".format(y_bm), end=" ")
-    op.text("M_xy = {} N;".format(xy_tm))
+    op.text("M_x = {} Nm/m;".format(x_bm), end=" ")
+    op.text("M_y = {} Nm/m;".format(y_bm), end=" ")
+    op.text("M_xy = {} Nm/m;".format(xy_tm))
     op.text("")
 
     # solution 2.
-    op.part("solved strain vs load")
+    op.part("then solved strain vs load")
     strain = Matrix([[c.x_normal_strain      ],
                      [c.y_normal_strain      ],
                      [c.xy_shear_strain      ],
@@ -139,9 +139,9 @@ def solve_ABD_matrix(c, m, op):
         op.text("{} = {};".format(i, solution[i]))
     op.text("")
 
-    x_ns = c.x_normal_strain if isinstance(c.x_normal_strain, (int, float)) else solution[c.x_normal_strain]
-    y_ns = c.y_normal_strain if isinstance(c.y_normal_strain, (int, float)) else solution[c.y_normal_strain]
-    xy_ss = c.xy_shear_strain if isinstance(c.xy_shear_strain, (int, float)) else solution[c.xy_shear_strain]
+    x_ns = solution[c.x_normal_strain] if c.x_normal_strain in solution else c.x_normal_strain
+    y_ns = solution[c.y_normal_strain] if c.y_normal_strain in solution else c.y_normal_strain
+    xy_ss = solution[c.xy_shear_strain] if c.xy_shear_strain in solution else c.xy_shear_strain
 
     op.part("strains")
     op.text("epsilon_x = {} Pa;".format(x_ns), end=" ")
@@ -149,9 +149,9 @@ def solve_ABD_matrix(c, m, op):
     op.text("gamma_xy = {} Pa;".format(xy_ss))
     op.text("")
 
-    x_sc = c.x_surface_curvature if isinstance(c.x_surface_curvature, (int, float)) else solution[c.x_surface_curvature]
-    y_sc = c.y_surface_curvature if isinstance(c.y_surface_curvature, (int, float)) else solution[c.y_surface_curvature]
-    xy_tc = c.xy_twisting_curvature if isinstance(c.xy_twisting_curvature, (int, float)) else solution[c.xy_twisting_curvature]
+    x_sc = solution[c.x_surface_curvature] if c.x_surface_curvature in solution else c.x_surface_curvature
+    y_sc = solution[c.y_surface_curvature] if c.y_surface_curvature in solution else c.y_surface_curvature
+    xy_tc = solution[c.xy_twisting_curvature] if c.xy_twisting_curvature in solution else c.xy_twisting_curvature
 
     op.part("curvatures")
     op.text("kappa_x = {} 1/m;".format(x_sc), end=" ")

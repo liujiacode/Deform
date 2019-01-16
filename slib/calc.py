@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Loading and paraphrasing calculation inputs.
 #
-# Version 1.0.0
+# Version 1.3.0
 # 2019.01.13
 #
 # Author: Liu Jia
@@ -227,20 +227,24 @@ class Calc(object):
             print("x strain is zero.")
             self.x_normal_strain = 0
             self.x_normal_load = Symbol("x_nl")
+            self.x_normal_stress = Symbol("x_nr")
         if self.constrain_y:
             print("Note: y direction is constrained.")
             print("y strain is zero.")
             self.y_normal_strain = 0
             self.y_normal_load = Symbol("y_nl")
+            self.y_normal_stress = Symbol("y_nr")
         if self.constrain_z:
             print("Note: z direction is constrained.")
             print("z strain is zero.")
             self.z_normal_strain = 0
             self.z_normal_load = Symbol("z_nl")
+            self.z_normal_stress = Symbol("z_nr")
 
-        if self.constrain_x or self.constrain_y or self.constrain_z:
-            self.yz_shear_load = self.xz_shear_load = self.xy_shear_load = 0
-            self.yz_shear_strain = self.xz_shear_strain = self.xy_shear_strain = 0
+        # if self.constrain_x or self.constrain_y or self.constrain_z:
+        #     self.yz_shear_load = self.xz_shear_load = self.xy_shear_load = 0
+        #     self.yz_shear_stress = self.xz_shear_stress = self.xy_shear_stress = 0
+        #     self.yz_shear_strain = self.xz_shear_strain = self.xy_shear_strain = 0
         
         if self.system == "l":
             print("Note: plane stress and strain conditions are used.")
@@ -250,6 +254,8 @@ class Calc(object):
             self.xz_shear_strain = 0
             self.yz_shear_load = 0
             self.xz_shear_load = 0
+            self.yz_shear_stress = 0
+            self.xz_shear_stress = 0
         
         if self.system == "s":
             print("Note: classical lamination theory and Kickhoff hypothesis are used.")
@@ -259,6 +265,8 @@ class Calc(object):
             self.xz_shear_strain = 0
             self.yz_shear_load = 0
             self.xz_shear_load = 0
+            self.yz_shear_stress = 0
+            self.xz_shear_stress = 0
             print("delta thm and moi are zeros (not considered).")
             self.delta_moi = 0
             self.delta_thm = 0

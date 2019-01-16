@@ -1,0 +1,26 @@
+# Calculation inputs.
+# 
+# Homework 2.
+# Question 1.
+# 
+# A unidirectional laminate of glass/epoxy has the dimensions of 100 mm×25mm×4mm.
+# It is subjected to a load of 100N along the 2 direction. Determine the new
+# dimensions of plate, using the properties given in Table 1.
+#
+
+#
+# bulk system is also fit for laminate calculations.
+#
+system = bulk
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+x_normal_load = 0    # N
+y_normal_load = 100  # N
+z_normal_load = 0    # N
+
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N

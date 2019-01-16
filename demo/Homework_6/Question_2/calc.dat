@@ -1,16 +1,29 @@
 # Calculation inputs.
-#
+# 
+# Homework 6.
+# Question 2.
+# 
+# A glass/epoxy laminate   is subjected to a uniform strain along the y
+# direction of  . Show the distribution through the thickness of the
+# laminate for the following ( h=0.15mm)
+# Off-axis strains
+# Off-axis stresses
+# On-axis stresses
+# On-axis strains
+# Use the properties from Table 2.1 in the book and those developed for
+# question 1 above.
+# 
 
 # 
 # Global definitions.
 # 
-system = bulk
+system = stacking
 
 length    = 100E-3  # m
 width     = 25E-3   # m
-thickness = 4E-3    # m
+thickness = -0.3E-3 / -0.15E-3 / 0 / 0.15E-3 / 0.3E-3    # m
 
-rotate_deg = 0
+rotate_deg = 90 / 0 / 0 / 90
 
 # 
 # x_normal_load is corresponding to the load along 1 direction in bulk and laminate with theta = 0;
@@ -22,9 +35,9 @@ rotate_deg = 0
 # 
 # The z strains would be ignored when system is laminate.
 #
-x_normal_load = 1E4  # N or N/m
-y_normal_load = 0    # N or N/m
-z_normal_load = 0    # N
+x_normal_load = 10E3  # N or N/m
+y_normal_load = 0     # N or N/m
+z_normal_load = 0     # N
 
 x_normal_stress = unknown # Pa
 y_normal_stress = unknown # Pa
@@ -50,9 +63,9 @@ xy_shear_strain = unknown
 # For stacking system.
 # These variables wouldn't work when system is bulk or laminate.
 # 
-# x_bending_moment   = unknown  # Nm/m
-# y_bending_moment   = unknown  # Nm/m
-# xy_twisting_moment = unknown  # Nm/m
+# x_bending_moment   = unknown  # N
+# y_bending_moment   = unknown  # N
+# xy_twisting_moment = unknown  # N
 # 
 # x_surface_curvature   = 0  # 1/m
 # y_surface_curvature   = 0  # 1/m

@@ -1,27 +1,26 @@
 # Deform
 This is a script used to compute composite material properties.
 
+# Version
+1.2.1 (2019.01.16).
+
 ## Installization
-python 3.6 or later
+python 3.6 or later.
 
 ## Running steps
-1. create a material.dat file.
-2. create a calc.dat file.
+1. create a "material.dat" file (e.g glass_epoxy.dat and graphite_epoxy.dat in ./materials folder);
+2. create a "calc.dat" file (e.g. general.dat in ./calc folder);
 3. running deform.py.
 
-## Demos
-./demos
-
 ## Update
-* v1.0.0: Initialization.
-* v1.1.0: Add loads.
-* v1.2.0: Fix solve machine.
+* v1.0.0: Initialization. (2019.01.13)
+* v1.1.0: Add loads. (2019.01.15)
+* v1.2.0: Fix solve machine. (2019.01.16)
+* v1.2.1: Add demos. (2019.01.16)
+* v1.3.0: Define thickness of each layer. (2019.01.16)
 
 ## Author
 Liu Jia
 
-## Website
-https://github.com/liujiacode/Deform
-
 ## License
-Deform is free software, which is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY. You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. See the GNU General Public License for more details.
+Deform is free software (script), which is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY. You can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. See the GNU General Public License for more details.

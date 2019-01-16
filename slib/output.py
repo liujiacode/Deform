@@ -17,8 +17,7 @@ class Output(object):
         self._file = output_file
         with open(self._file, "w") as f:
             f.write("Deform info.\n\n")
-            f.write("Version 1.2.0\n")
-            f.write("Update deform.py at https://github.com/liujiacode/Deform\n\n")
+            f.write("Version 1.3.0\n")
             f.write("Calculation start.\n\n")
     
     def title(self, info):

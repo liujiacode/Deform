@@ -62,10 +62,10 @@ def solve_S_matrix(c, m, op):
         op.text("")
     if c.delta_moi:
         op.part("moisture conditions")
-        op.text("beta_1 = {} 1/C;".format(m.beta_1), end=" ")
-        op.text("beta_2 = {} 1/C;".format(m.beta_2), end=" ")
-        op.text("beta_3 = {} 1/C;".format(m.beta_3), end=" ")
-        op.text("delta_M = {} C;".format(c.delta_moi))
+        op.text("beta_1 = {} 1/%M;".format(m.beta_1), end=" ")
+        op.text("beta_2 = {} 1/%M;".format(m.beta_2), end=" ")
+        op.text("beta_3 = {} 1/%M;".format(m.beta_3), end=" ")
+        op.text("delta_M = {} %M;".format(c.delta_moi))
         op.text("")
 
     op.part("S_matrix (Pa)")
@@ -79,7 +79,7 @@ def solve_S_matrix(c, m, op):
 
     op.section("solution")
     # solution 1.
-    op.part("solve stress vs load")
+    op.part("first solve stress vs load")
     stress_1 = Matrix([[c.x_normal_load / (c.width     * c.thickness)],
                        [c.y_normal_load / (c.thickness * c.length   )],
                        [c.z_normal_load / (c.length    * c.width    )],
@@ -128,7 +128,7 @@ def solve_S_matrix(c, m, op):
     op.text("")
 
     # solution 2.
-    op.part("solved strain vs stress")
+    op.part("then solved strain vs stress")
     strain = Matrix([[c.x_normal_strain - m.alpha_1 * c.delta_thm - m.beta_1 * c.delta_moi],
                      [c.y_normal_strain - m.alpha_2 * c.delta_thm - m.beta_2 * c.delta_moi],
                      [c.z_normal_strain - m.alpha_3 * c.delta_thm - m.beta_3 * c.delta_moi],
@@ -149,9 +149,9 @@ def solve_S_matrix(c, m, op):
         op.text("{} = {};".format(i, solution[i]))
     op.text("")
 
-    x_ns = c.x_normal_strain if isinstance(c.x_normal_strain, (int, float)) else solution[c.x_normal_strain]
-    y_ns = c.y_normal_strain if isinstance(c.y_normal_strain, (int, float)) else solution[c.y_normal_strain]
-    z_ns = c.z_normal_strain if isinstance(c.z_normal_strain, (int, float)) else solution[c.z_normal_strain]
+    x_ns = solution[c.x_normal_strain] if c.x_normal_strain in solution else c.x_normal_strain
+    y_ns = solution[c.y_normal_strain] if c.y_normal_strain in solution else c.y_normal_strain
+    z_ns = solution[c.z_normal_strain] if c.z_normal_strain in solution else c.z_normal_strain
 
     op.part("normal strains")
     op.text("epsilon_x = {};".format(x_ns), end=" ")
@@ -159,9 +159,9 @@ def solve_S_matrix(c, m, op):
     op.text("epsilon_z = {};".format(z_ns))
     op.text("")
 
-    yz_ss = c.yz_shear_strain if isinstance(c.yz_shear_strain, (int, float)) else solution[c.yz_shear_strain]
-    xz_ss = c.xz_shear_strain if isinstance(c.xz_shear_strain, (int, float)) else solution[c.xz_shear_strain]
-    xy_ss = c.xy_shear_strain if isinstance(c.xy_shear_strain, (int, float)) else solution[c.xy_shear_strain]
+    yz_ss = solution[c.yz_shear_strain] if c.yz_shear_strain in solution else c.yz_shear_strain
+    xz_ss = solution[c.xz_shear_strain] if c.xz_shear_strain in solution else c.xz_shear_strain
+    xy_ss = solution[c.xy_shear_strain] if c.xy_shear_strain in solution else c.xy_shear_strain
 
     op.part("shear strains")
     op.text("gamma_yz = {};".format(yz_ss), end=" ")
