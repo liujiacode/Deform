@@ -1,6 +1,6 @@
 Deform info.
 
-Version 1.2.1
+Version 1.4.0
 Calculation start.
 
 ===== ===== ===== ===== System ===== ===== ===== =====
@@ -8,8 +8,9 @@ stacking laminates.
 
 length    = 0.1 m;
 width     = 0.025 m;
-thickness = [-0.0003  -0.00015  0.       0.00015  0.0003 ] m;
-theta = [  0.  30. -30.   0.] deg.
+thickness = [-0.0006  -0.00045 -0.0003  -0.00015  0.       0.00015  0.0003   0.00045
+  0.0006 ] m;
+theta = [  0.  45. -45.  90.  90. -45.  45.   0.] deg.
 
 ===== ===== ===== ===== Solving ABD matrix ===== ===== ===== =====
 === === Knowns and unknowns === ===
@@ -17,10 +18,10 @@ Pr) Stresses
 sigma_x = x_nr Pa; sigma_y = y_nr Pa; tau_xy = xy_sr Pa;
 
 Pr) Normal load resultants
-N_x = 0.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
+N_x = 400000.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
 
 Pr) Bending moment resultants
-M_x = 20.0 N; M_y = 0.0 N; M_xy = 0.0 N;
+M_x = 0.0 Nm/m; M_y = 0.0 Nm/m; M_xy = 0.0 Nm/m;
 
 Pr) Strains
 epsilon_x = x_ns Pa; epsilon_y = y_ns Pa; gamma_xy = xy_ss Pa;
@@ -29,166 +30,313 @@ Pr) Curvatures
 kappa_x = x_sc 1/m; kappa_y = y_sc 1/m; kappa_xy = xy_tc 1/m;
 
 Pr) Rotate degree
-theta = [  0.  30. -30.   0.] deg;
+theta = [  0.  45. -45.  90.  90. -45.  45.   0.] deg;
 
 Pr) ABD_matrix (**)
-[ 2.570E+07    4.603E+06   -2.328E-10    2.274E-13    5.684E-14   -2.699E+02   ]
-[ 4.603E+06    9.724E+06   -1.164E-10    8.527E-14    1.137E-13   -7.591E+01   ]
-[-2.328E-10   -1.164E-10    5.060E+06   -2.699E+02   -7.591E+01    2.842E-14   ]
-[ 2.274E-13    5.684E-14   -2.699E+02    8.812E-01    8.769E-02   -5.204E-18   ]
-[ 8.527E-14    1.137E-13   -7.591E+01    8.769E-02    2.822E-01   -1.735E-18   ]
-[-2.699E+02   -7.591E+01    2.842E-14   -5.204E-18   -1.735E-18    1.014E-01   ]
+[ 3.393E+07    1.070E+07   -9.313E-10    9.095E-13    0.000E+00   -2.274E-13   ]
+[ 1.070E+07    3.393E+07   -2.328E-10   -5.684E-14    4.547E-13   -2.274E-13   ]
+[-9.313E-10   -2.328E-10    1.161E+07   -2.274E-13   -2.274E-13    1.137E-13   ]
+[ 9.095E-13    0.000E+00   -2.274E-13    5.643E+00    1.150E+00    2.396E-01   ]
+[-5.684E-14    4.547E-13   -2.274E-13    1.150E+00    2.768E+00    2.396E-01   ]
+[-2.274E-13   -2.274E-13    1.137E-13    2.396E-01    2.396E-01    1.259E+00   ]
 
 Pr) Abd_matrix (**)
-[ 4.352E-08   -1.981E-08    5.498E-25   -8.819E-21    2.724E-21    1.010E-04   ]
-[-1.981E-08    1.125E-07    8.221E-25   -1.302E-21   -4.049E-20    3.144E-05   ]
-[ 4.725E-25    1.028E-24    2.013E-07    5.805E-05    3.609E-05   -5.078E-20   ]
-[-9.051E-21    2.295E-21    5.805E-05    1.188E+00   -3.534E-01    1.626E-17   ]
-[-1.608E-21   -3.956E-20    3.609E-05   -3.534E-01    3.663E+00    5.150E-19   ]
-[ 1.010E-04    3.144E-05   -5.073E-20    1.419E-17    1.135E-17    1.015E+01   ]
+[ 3.273E-08   -1.032E-08    2.418E-24   -6.375E-21    3.953E-21    4.507E-21   ]
+[-1.032E-08    3.273E-08   -1.716E-25    3.244E-21   -7.138E-21    4.787E-21   ]
+[ 2.418E-24   -1.716E-25    8.610E-08    2.475E-21    6.871E-21   -9.551E-21   ]
+[-6.408E-21    2.929E-21    2.475E-21    1.942E-01   -7.873E-02   -2.196E-02   ]
+[ 4.649E-21   -7.226E-21    6.871E-21   -7.873E-02    3.992E-01   -6.098E-02   ]
+[ 4.380E-21    4.863E-21   -9.551E-21   -2.196E-02   -6.098E-02    8.099E-01   ]
 
 === === Solution === ===
 Pr) First solve load vs stress
-integrate1(z) = 0.0006.
+integrate1(z) = 0.0012.
 integrate2(z) = 0.0.
 
+x_nr = 333333333.333333;
+xy_sr = 0.0;
+y_nr = 0.0;
 
 Pr) Normal load resultants
-N_x = 0.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
+N_x = 400000.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
 
 Pr) Bending moment resultants
-M_x = 20.0 N; M_y = 0.0 N; M_xy = 0.0 N;
+M_x = 0.0 Nm/m; M_y = 0.0 Nm/m; M_xy = 0.0 Nm/m;
 
 Pr) Then solved strain vs load
-x_ns = -1.76379226857525E-19;
-x_sc = 23.7543344985931;
-xy_ss = 0.00116106875505382;
-xy_tc = 2.83769143410308E-16;
-y_ns = -2.60464515364487E-20;
-y_sc = -7.06787315707947;
+x_ns = 0.0130915863757139;
+x_sc = -2.56306778185243E-15;
+xy_ss = 9.67020890302058E-19;
+xy_tc = 1.75213605036751E-15;
+y_ns = -0.00412865325301780;
+y_sc = 1.85977003218865E-15;
 
 Pr) Strains
-epsilon_x = -1.76379226857525E-19 Pa; epsilon_y = -2.60464515364487E-20 Pa; gamma_xy = 0.00116106875505382 Pa;
+epsilon_x = 0.0130915863757139 Pa; epsilon_y = -0.00412865325301780 Pa; gamma_xy = 9.67020890302058E-19 Pa;
 
 Pr) Curvatures
-kappa_x = 23.7543344985931 1/m; kappa_y = -7.06787315707947 1/m; kappa_xy = 2.83769143410308E-16 1/m;
+kappa_x = -2.56306778185243E-15 1/m; kappa_y = 1.85977003218865E-15 1/m; kappa_xy = 1.75213605036751E-15 1/m;
 
 ===== ===== ===== ===== Off axis strains solution ===== ===== ===== =====
 === === Scale 1 === ===
+z scale = -0.0006.
+
+Pr) Off strain
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = -8.42607399184494E-20.
+
+--- -- - Lower layer info - -- ---
+theta = 0.0.
+[ 5.100E+10    3.938E+09    0.000E+00   ]
+[ 3.938E+09    1.550E+10    0.000E+00   ]
+[ 0.000E+00    0.000E+00    4.700E+09   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off lower layer stress
+theta = 0.0.
+off sigma_x = 651415538.673945.
+off sigma_y = -12455827.2116232.
+off tau_xy = -3.96025477616712E-10.
+
+=== === Scale 2 === ===
+z scale = -0.00045.
+
+Pr) Off strain
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 1.78559667636677E-19.
+
+--- -- - Upper layer info - -- ---
+theta = 0.0.
+[ 5.100E+10    3.938E+09    0.000E+00   ]
+[ 3.938E+09    1.550E+10    0.000E+00   ]
+[ 0.000E+00    0.000E+00    4.700E+09   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off upper layer stress
+theta = 0.0.
+off sigma_x = 651415538.673945.
+off sigma_y = -12455827.2116232.
+off tau_xy = 8.39230437892384E-10.
+
+--- -- - Lower layer info - -- ---
+theta = 45.0.
+[ 2.330E+10    1.390E+10    8.874E+09   ]
+[ 1.390E+10    2.330E+10    8.874E+09   ]
+[ 8.874E+09    8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off lower layer stress
+theta = 45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = 79537475.8644900.
+
+=== === Scale 3 === ===
 z scale = -0.0003.
 
 Pr) Off strain
-off epsilon_x = -0.00712630034957794.
-off epsilon_y = 0.00212036194712384.
-off gamma_xy = 0.00116106875505382.
-
---- -- - Lower layer info - -- ---
-theta = 0.0.
-[ 5.100E+10    3.938E+09    0.000E+00   ]
-[ 3.938E+09    1.550E+10    0.000E+00   ]
-[ 0.000E+00    0.000E+00    4.700E+09   ]
-[stress] = [trQ][strain]
---- -- - End - -- ---
-
-Pr) Off lower layer stress
-theta = 0.0.
-off sigma_x = -355093117.086189.
-off sigma_y = 4810631.46735523.
-off tau_xy = 5457023.14875295.
-
-=== === Scale 2 === ===
-z scale = -0.00015.
-
-Pr) Off strain
-off epsilon_x = -0.00356315017478897.
-off epsilon_y = 0.00106018097356192.
-off gamma_xy = 0.00116106875505382.
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 4.41380075191804E-19.
 
 --- -- - Upper layer info - -- ---
-theta = 0.0.
-[ 5.100E+10    3.938E+09    0.000E+00   ]
-[ 3.938E+09    1.550E+10    0.000E+00   ]
-[ 0.000E+00    0.000E+00    4.700E+09   ]
+theta = 45.0.
+[ 2.330E+10    1.390E+10    8.874E+09   ]
+[ 1.390E+10    2.330E+10    8.874E+09   ]
+[ 8.874E+09    8.874E+09    1.466E+10   ]
 [stress] = [trQ][strain]
 --- -- - End - -- ---
 
 Pr) Off upper layer stress
-theta = 0.0.
-off sigma_x = -177546558.543094.
-off sigma_y = 2405315.73367762.
-off tau_xy = 5457023.14875295.
+theta = 45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = 79537475.8644900.
 
 --- -- - Lower layer info - -- ---
-theta = 30.0.
-[ 3.466E+10    1.141E+10    1.200E+10   ]
-[ 1.141E+10    1.691E+10    3.374E+09   ]
-[ 1.200E+10    3.374E+09    1.217E+10   ]
+theta = -45.0.
+[ 2.330E+10    1.390E+10   -8.874E+09   ]
+[ 1.390E+10    2.330E+10   -8.874E+09   ]
+[-8.874E+09   -8.874E+09    1.466E+10   ]
 [stress] = [trQ][strain]
 --- -- - End - -- ---
 
 Pr) Off lower layer stress
-theta = 30.0.
-off sigma_x = -97471911.7663384.
-off sigma_y = -18795708.0402280.
-off tau_xy = -25041699.0403290.
+theta = -45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = -79537475.8644900.
 
-=== === Scale 3 === ===
+=== === Scale 4 === ===
+z scale = -0.00014999999999999996.
+
+Pr) Off strain
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 7.04200482746931E-19.
+
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 2.330E+10    1.390E+10   -8.874E+09   ]
+[ 1.390E+10    2.330E+10   -8.874E+09   ]
+[-8.874E+09   -8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off upper layer stress
+theta = -45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = -79537475.8644900.
+
+--- -- - Lower layer info - -- ---
+theta = 90.0.
+[ 1.550E+10    3.938E+09   -1.326E-07   ]
+[ 3.938E+09    5.100E+10    2.306E-06   ]
+[-1.326E-07    2.306E-06    4.700E+09   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off lower layer stress
+theta = 90.0.
+off sigma_x = 186714208.815976.
+off sigma_y = -159007253.611632.
+off tau_xy = -7.94789751833297E-9.
+
+=== === Scale 5 === ===
 z scale = 0.0.
 
 Pr) Off strain
-off epsilon_x = -1.76379226857525E-19.
-off epsilon_y = -2.60464515364487E-20.
-off gamma_xy = 0.00116106875505382.
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 9.67020890302058E-19.
 
 --- -- - Upper layer info - -- ---
-theta = 30.0.
-[ 3.466E+10    1.141E+10    1.200E+10   ]
-[ 1.141E+10    1.691E+10    3.374E+09   ]
-[ 1.200E+10    3.374E+09    1.217E+10   ]
+theta = 90.0.
+[ 1.550E+10    3.938E+09   -1.326E-07   ]
+[ 3.938E+09    5.100E+10    2.306E-06   ]
+[-1.326E-07    2.306E-06    4.700E+09   ]
 [stress] = [trQ][strain]
 --- -- - End - -- ---
 
 Pr) Off upper layer stress
-theta = 30.0.
-off sigma_x = 13928976.4693287.
-off sigma_y = 3916995.80896877.
-off tau_xy = 14127652.7428231.
+theta = 90.0.
+off sigma_x = 186714208.815976.
+off sigma_y = -159007253.611632.
+off tau_xy = -6.71264160282387E-9.
 
 --- -- - Lower layer info - -- ---
-theta = -30.0.
-[ 3.466E+10    1.141E+10   -1.200E+10   ]
-[ 1.141E+10    1.691E+10   -3.374E+09   ]
-[-1.200E+10   -3.374E+09    1.217E+10   ]
+theta = 90.0.
+[ 1.550E+10    3.938E+09   -1.326E-07   ]
+[ 3.938E+09    5.100E+10    2.306E-06   ]
+[-1.326E-07    2.306E-06    4.700E+09   ]
 [stress] = [trQ][strain]
 --- -- - End - -- ---
 
 Pr) Off lower layer stress
-theta = -30.0.
-off sigma_x = -13928976.4693287.
-off sigma_y = -3916995.80896877.
-off tau_xy = 14127652.7428231.
+theta = 90.0.
+off sigma_x = 186714208.815976.
+off sigma_y = -159007253.611632.
+off tau_xy = -6.71264160282387E-9.
 
-=== === Scale 4 === ===
-z scale = 0.00015000000000000001.
+=== === Scale 6 === ===
+z scale = 0.00014999999999999996.
 
 Pr) Off strain
-off epsilon_x = 0.00356315017478897.
-off epsilon_y = -0.00106018097356192.
-off gamma_xy = 0.00116106875505382.
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 1.22984129785719E-18.
 
 --- -- - Upper layer info - -- ---
-theta = -30.0.
-[ 3.466E+10    1.141E+10   -1.200E+10   ]
-[ 1.141E+10    1.691E+10   -3.374E+09   ]
-[-1.200E+10   -3.374E+09    1.217E+10   ]
+theta = 90.0.
+[ 1.550E+10    3.938E+09   -1.326E-07   ]
+[ 3.938E+09    5.100E+10    2.306E-06   ]
+[-1.326E-07    2.306E-06    4.700E+09   ]
 [stress] = [trQ][strain]
 --- -- - End - -- ---
 
 Pr) Off upper layer stress
-theta = -30.0.
-off sigma_x = 97471911.7663385.
-off sigma_y = 18795708.0402280.
-off tau_xy = -25041699.0403290.
+theta = 90.0.
+off sigma_x = 186714208.815976.
+off sigma_y = -159007253.611632.
+off tau_xy = -5.47738568731477E-9.
+
+--- -- - Lower layer info - -- ---
+theta = -45.0.
+[ 2.330E+10    1.390E+10   -8.874E+09   ]
+[ 1.390E+10    2.330E+10   -8.874E+09   ]
+[-8.874E+09   -8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off lower layer stress
+theta = -45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = -79537475.8644900.
+
+=== === Scale 7 === ===
+z scale = 0.00030000000000000003.
+
+Pr) Off strain
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 1.49266170541231E-18.
+
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 2.330E+10    1.390E+10   -8.874E+09   ]
+[ 1.390E+10    2.330E+10   -8.874E+09   ]
+[-8.874E+09   -8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off upper layer stress
+theta = -45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = -79537475.8644900.
+
+--- -- - Lower layer info - -- ---
+theta = 45.0.
+[ 2.330E+10    1.390E+10    8.874E+09   ]
+[ 1.390E+10    2.330E+10    8.874E+09   ]
+[ 8.874E+09    8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off lower layer stress
+theta = 45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = 79537475.8644900.
+
+=== === Scale 8 === ===
+z scale = 0.00045.
+
+Pr) Off strain
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 1.75548211296744E-18.
+
+--- -- - Upper layer info - -- ---
+theta = 45.0.
+[ 2.330E+10    1.390E+10    8.874E+09   ]
+[ 1.390E+10    2.330E+10    8.874E+09   ]
+[ 8.874E+09    8.874E+09    1.466E+10   ]
+[stress] = [trQ][strain]
+--- -- - End - -- ---
+
+Pr) Off upper layer stress
+theta = 45.0.
+off sigma_x = 247601792.921706.
+off sigma_y = 85731540.4116273.
+off tau_xy = 79537475.8644900.
 
 --- -- - Lower layer info - -- ---
 theta = 0.0.
@@ -200,17 +348,17 @@ theta = 0.0.
 
 Pr) Off lower layer stress
 theta = 0.0.
-off sigma_x = 177546558.543094.
-off sigma_y = -2405315.73367762.
-off tau_xy = 5457023.14875295.
+off sigma_x = 651415538.673945.
+off sigma_y = -12455827.2116232.
+off tau_xy = 8.25076593094696E-9.
 
-=== === Scale 5 === ===
-z scale = 0.0003.
+=== === Scale 9 === ===
+z scale = 0.0006.
 
 Pr) Off strain
-off epsilon_x = 0.00712630034957794.
-off epsilon_y = -0.00212036194712384.
-off gamma_xy = 0.00116106875505382.
+off epsilon_x = 0.0130915863757139.
+off epsilon_y = -0.00412865325301780.
+off gamma_xy = 2.01830252052257E-18.
 
 --- -- - Upper layer info - -- ---
 theta = 0.0.
@@ -222,13 +370,13 @@ theta = 0.0.
 
 Pr) Off upper layer stress
 theta = 0.0.
-off sigma_x = 355093117.086189.
-off sigma_y = -4810631.46735523.
-off tau_xy = 5457023.14875295.
+off sigma_x = 651415538.673945.
+off sigma_y = -12455827.2116232.
+off tau_xy = 9.48602184645606E-9.
 
 ===== ===== ===== ===== On axis strains solution ===== ===== ===== =====
 === === Scale 1 === ===
-z scale = -0.0003.
+z scale = -0.0006.
 
 Pr) On lower layer strain
 theta = 0.0.
@@ -240,9 +388,9 @@ theta = 0.0.
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = -0.00712630034957794.
-on epsilon_y = 0.00212036194712384.
-on gamma_xy = 0.00116106875505382.
+on epsilon_x = 0.0130915863757139.
+on epsilon_y = -0.00412865325301780.
+on gamma_xy = -8.42607399184494E-20.
 
 Pr) On lower layer stress
 theta = 0.0.
@@ -254,12 +402,12 @@ theta = 0.0.
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = -177546558.543094.
-on sigma_y = 2405315.73367762.
-on tau_xy = 5457023.14875295.
+on sigma_x = 651415538.673945.
+on sigma_y = -12455827.2116232.
+on tau_xy = 8.39230437892384E-10.
 
 === === Scale 2 === ===
-z scale = -0.00015.
+z scale = -0.00045.
 
 Pr) On upper layer strain
 theta = 0.0.
@@ -271,23 +419,23 @@ theta = 0.0.
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = -0.00356315017478897.
-on epsilon_y = 0.00106018097356192.
-on gamma_xy = 0.00116106875505382.
+on epsilon_x = 0.0130915863757139.
+on epsilon_y = -0.00412865325301780.
+on gamma_xy = 1.78559667636677E-19.
 
 Pr) On lower layer strain
-theta = 30.0.
+theta = 45.0.
 --- -- - Lower layer info - -- ---
-theta = 30.0.
-[ 7.500E-01    2.500E-01    8.660E-01   ]
-[ 2.500E-01    7.500E-01   -8.660E-01   ]
-[-4.330E-01    4.330E-01    5.000E-01   ]
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = -0.00190455986899276.
-on epsilon_y = -0.000598409332234291.
-on gamma_xy = 0.00458445660210666.
+on epsilon_x = 0.00448146656134808.
+on epsilon_y = 0.00448146656134808.
+on gamma_xy = -0.0172202396287317.
 
 Pr) On upper layer stress
 theta = 0.0.
@@ -299,99 +447,335 @@ theta = 0.0.
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = -177546558.543094.
-on sigma_y = 2405315.73367762.
-on tau_xy = 5457023.14875295.
+on sigma_x = 651415538.673945.
+on sigma_y = -12455827.2116232.
+on tau_xy = 8.39230437892384E-10.
 
 Pr) On lower layer stress
-theta = 30.0.
+theta = 45.0.
 --- -- - Lower layer info - -- ---
-theta = 30.0.
-[ 7.500E-01    2.500E-01    8.660E-01   ]
-[ 2.500E-01    7.500E-01   -8.660E-01   ]
-[-4.330E-01    4.330E-01    5.000E-01   ]
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 23660887.4753684.
-on sigma_y = -5814915.19707099.
-on tau_xy = 2728511.57437648.
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = -80935126.2550392.
 
 === === Scale 3 === ===
+z scale = -0.0003.
+
+Pr) On upper layer strain
+theta = 45.0.
+--- -- - Upper layer info - -- ---
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134807.
+on gamma_xy = -0.0172202396287317.
+
+Pr) On lower layer strain
+theta = -45.0.
+--- -- - Lower layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134807.
+on gamma_xy = 0.0172202396287317.
+
+Pr) On upper layer stress
+theta = 45.0.
+--- -- - Upper layer info - -- ---
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = -80935126.2550392.
+
+Pr) On lower layer stress
+theta = -45.0.
+--- -- - Lower layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = 80935126.2550392.
+
+=== === Scale 4 === ===
+z scale = -0.00014999999999999996.
+
+Pr) On upper layer strain
+theta = -45.0.
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134807.
+on gamma_xy = 0.0172202396287317.
+
+Pr) On lower layer strain
+theta = 90.0.
+--- -- - Lower layer info - -- ---
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = -0.00412865325301780.
+on epsilon_y = 0.0130915863757139.
+on gamma_xy = -2.81307161693460E-18.
+
+Pr) On upper layer stress
+theta = -45.0.
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = 80935126.2550392.
+
+Pr) On lower layer stress
+theta = 90.0.
+--- -- - Lower layer info - -- ---
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = -159007253.611632.
+on sigma_y = 186714208.815976.
+on tau_xy = -1.44566925151017E-8.
+
+=== === Scale 5 === ===
 z scale = 0.0.
 
 Pr) On upper layer strain
-theta = 30.0.
+theta = 90.0.
 --- -- - Upper layer info - -- ---
-theta = 30.0.
-[ 7.500E-01    2.500E-01    8.660E-01   ]
-[ 2.500E-01    7.500E-01   -8.660E-01   ]
-[-4.330E-01    4.330E-01    5.000E-01   ]
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = 0.000502757518708489.
-on epsilon_y = -0.000502757518708489.
-on gamma_xy = 0.000580534377526910.
+on epsilon_x = -0.00412865325301780.
+on epsilon_y = 0.0130915863757139.
+on gamma_xy = -3.07589202448973E-18.
 
 Pr) On lower layer strain
-theta = -30.0.
+theta = 90.0.
 --- -- - Lower layer info - -- ---
-theta = -30.0.
-[ 7.500E-01    2.500E-01   -8.660E-01   ]
-[ 2.500E-01    7.500E-01    8.660E-01   ]
-[ 4.330E-01   -4.330E-01    5.000E-01   ]
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = -0.000502757518708489.
-on epsilon_y = 0.000502757518708489.
-on gamma_xy = 0.000580534377526909.
+on epsilon_x = -0.00412865325301780.
+on epsilon_y = 0.0130915863757139.
+on gamma_xy = -3.07589202448973E-18.
 
 Pr) On upper layer stress
-theta = 30.0.
+theta = 90.0.
 --- -- - Upper layer info - -- ---
-theta = 30.0.
-[ 7.500E-01    2.500E-01    8.660E-01   ]
-[ 2.500E-01    7.500E-01   -8.660E-01   ]
-[-4.330E-01    4.330E-01    5.000E-01   ]
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 23660887.4753684.
-on sigma_y = -5814915.19707099.
-on tau_xy = 2728511.57437648.
+on sigma_x = -159007253.611632.
+on sigma_y = 186714208.815976.
+on tau_xy = -1.44566925151017E-8.
 
 Pr) On lower layer stress
-theta = -30.0.
+theta = 90.0.
 --- -- - Lower layer info - -- ---
-theta = -30.0.
-[ 7.500E-01    2.500E-01   -8.660E-01   ]
-[ 2.500E-01    7.500E-01    8.660E-01   ]
-[ 4.330E-01   -4.330E-01    5.000E-01   ]
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 99489608.3576601.
-on sigma_y = 16778011.4489063.
-on tau_xy = 21546946.0299013.
+on sigma_x = -159007253.611632.
+on sigma_y = 186714208.815976.
+on tau_xy = -1.56919484306108E-8.
 
-=== === Scale 4 === ===
-z scale = 0.00015000000000000001.
+=== === Scale 6 === ===
+z scale = 0.00014999999999999996.
 
 Pr) On upper layer strain
-theta = -30.0.
+theta = 90.0.
 --- -- - Upper layer info - -- ---
-theta = -30.0.
-[ 7.500E-01    2.500E-01   -8.660E-01   ]
-[ 2.500E-01    7.500E-01    8.660E-01   ]
-[ 4.330E-01   -4.330E-01    5.000E-01   ]
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = 0.00190455986899276.
-on epsilon_y = 0.000598409332234291.
-on gamma_xy = 0.00458445660210666.
+on epsilon_x = -0.00412865325301780.
+on epsilon_y = 0.0130915863757139.
+on gamma_xy = -3.33871243204486E-18.
+
+Pr) On lower layer strain
+theta = -45.0.
+--- -- - Lower layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134808.
+on gamma_xy = 0.0172202396287317.
+
+Pr) On upper layer stress
+theta = 90.0.
+--- -- - Upper layer info - -- ---
+theta = 90.0.
+[ 3.749E-33    1.000E+00    1.225E-16   ]
+[ 1.000E+00    3.749E-33   -1.225E-16   ]
+[-6.123E-17    6.123E-17   -1.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = -159007253.611632.
+on sigma_y = 186714208.815976.
+on tau_xy = -1.56919484306108E-8.
+
+Pr) On lower layer stress
+theta = -45.0.
+--- -- - Lower layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021766.
+on tau_xy = 80935126.2550392.
+
+=== === Scale 7 === ===
+z scale = 0.00030000000000000003.
+
+Pr) On upper layer strain
+theta = -45.0.
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134808.
+on gamma_xy = 0.0172202396287317.
+
+Pr) On lower layer strain
+theta = 45.0.
+--- -- - Lower layer info - -- ---
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134808.
+on epsilon_y = 0.00448146656134807.
+on gamma_xy = -0.0172202396287317.
+
+Pr) On upper layer stress
+theta = -45.0.
+--- -- - Upper layer info - -- ---
+theta = -45.0.
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01   -5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021766.
+on tau_xy = 80935126.2550392.
+
+Pr) On lower layer stress
+theta = 45.0.
+--- -- - Lower layer info - -- ---
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
+[stress] = [T][stress]
+--- -- - End - -- ---
+
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = -80935126.2550392.
+
+=== === Scale 8 === ===
+z scale = 0.00045.
+
+Pr) On upper layer strain
+theta = 45.0.
+--- -- - Upper layer info - -- ---
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
+[1/2 strain] = [T][1/2 strain]
+--- -- - End - -- ---
+
+on epsilon_x = 0.00448146656134807.
+on epsilon_y = 0.00448146656134807.
+on gamma_xy = -0.0172202396287317.
 
 Pr) On lower layer strain
 theta = 0.0.
@@ -403,23 +787,23 @@ theta = 0.0.
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = 0.00356315017478897.
-on epsilon_y = -0.00106018097356192.
-on gamma_xy = 0.00116106875505382.
+on epsilon_x = 0.0130915863757139.
+on epsilon_y = -0.00412865325301780.
+on gamma_xy = 1.75548211296744E-18.
 
 Pr) On upper layer stress
-theta = -30.0.
+theta = 45.0.
 --- -- - Upper layer info - -- ---
-theta = -30.0.
-[ 7.500E-01    2.500E-01   -8.660E-01   ]
-[ 2.500E-01    7.500E-01    8.660E-01   ]
-[ 4.330E-01   -4.330E-01    5.000E-01   ]
+theta = 45.0.
+[ 5.000E-01    5.000E-01    1.000E+00   ]
+[ 5.000E-01    5.000E-01   -1.000E+00   ]
+[-5.000E-01    5.000E-01    0.000E+00   ]
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 99489608.3576601.
-on sigma_y = 16778011.4489063.
-on tau_xy = 21546946.0299013.
+on sigma_x = 246204142.531157.
+on sigma_y = 87129190.8021765.
+on tau_xy = -80935126.2550392.
 
 Pr) On lower layer stress
 theta = 0.0.
@@ -431,12 +815,12 @@ theta = 0.0.
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 355093117.086189.
-on sigma_y = -4810631.46735523.
-on tau_xy = 5457023.14875295.
+on sigma_x = 651415538.673945.
+on sigma_y = -12455827.2116232.
+on tau_xy = 9.48602184645606E-9.
 
-=== === Scale 5 === ===
-z scale = 0.0003.
+=== === Scale 9 === ===
+z scale = 0.0006.
 
 Pr) On upper layer strain
 theta = 0.0.
@@ -448,9 +832,9 @@ theta = 0.0.
 [1/2 strain] = [T][1/2 strain]
 --- -- - End - -- ---
 
-on epsilon_x = 0.00712630034957794.
-on epsilon_y = -0.00212036194712384.
-on gamma_xy = 0.00116106875505382.
+on epsilon_x = 0.0130915863757139.
+on epsilon_y = -0.00412865325301780.
+on gamma_xy = 2.01830252052257E-18.
 
 Pr) On upper layer stress
 theta = 0.0.
@@ -462,9 +846,9 @@ theta = 0.0.
 [stress] = [T][stress]
 --- -- - End - -- ---
 
-on sigma_x = 355093117.086189.
-on sigma_y = -4810631.46735523.
-on tau_xy = 5457023.14875295.
+on sigma_x = 651415538.673945.
+on sigma_y = -12455827.2116232.
+on tau_xy = 9.48602184645606E-9.
 
 
 ===== ===== ===== ===== End ===== ===== ===== =====

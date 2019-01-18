@@ -1,6 +1,6 @@
 Deform info.
 
-Version 1.2.1
+Version 1.4.0
 Calculation start.
 
 ===== ===== ===== ===== System ===== ===== ===== =====
@@ -22,10 +22,10 @@ Pr) Normal stresses
 sigma_x = x_nr Pa; sigma_y = y_nr Pa; sigma_z = z_nr Pa;
 
 Pr) Shear strains
-gamma_yz = 0; gamma_xz = 0; gamma_xy = 0;
+gamma_yz = 0.0; gamma_xz = 0.0; gamma_xy = 0.0;
 
 Pr) Shear loads
-F_yz = 0 N; F_xz = 0 N; F_xy = 0 N;
+F_yz = yz_ss N; F_xz = xz_ss N; F_xy = xy_ss N;
 
 Pr) Shear stresses
 tau_yz = yz_sr Pa; tau_xz = xz_sr Pa; tau_xy = xy_sr Pa;
@@ -66,14 +66,17 @@ tau_yz = 0.0 Pa; tau_xz = 0.0 Pa; tau_xy = 0.0 Pa;
 
 Pr) Then solved strain vs stress
 x_nr = -65100000.0000000;
+xy_ss = 0.0;
+xz_ss = 0.0;
 y_ns = 0.0192907080000000;
+yz_ss = 0.0;
 z_ns = 0.0192907080000000;
 
 Pr) Normal strains
 epsilon_x = 0; epsilon_y = 0.0192907080000000; epsilon_z = 0.0192907080000000;
 
 Pr) Shear strains
-gamma_yz = 0; gamma_xz = 0; gamma_xy = 0;
+gamma_yz = 0.0; gamma_xz = 0.0; gamma_xy = 0.0;
 
 ===== ===== ===== ===== Final size ===== ===== ===== =====
 === === Final length === ===
@@ -82,9 +85,9 @@ widht     = 0.0254822677000000 m;
 thickness = 0.00407716283200000 m;
 
 === === Final angle === ===
-yz angle = 90.0 deg;
-xz angle = 90.0 deg;
-xy angle = 90.0 deg;
+yz angle = 90 deg;
+xz angle = 90 deg;
+xy angle = 90 deg;
 
 ===== ===== ===== ===== End ===== ===== ===== =====
 Have a nice day.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Loading and paraphrasing calculation inputs.
 #
-# Version 1.3.0
+# Version 1.4.0
 # 2019.01.13
 #
 # Author: Liu Jia
@@ -248,23 +248,26 @@ class Calc(object):
         
         if self.system == "l":
             print("Note: plane stress and strain conditions are used.")
-            print("z strains are zeros (not considered).")
-            self.z_normal_strain = 0
+            print("z stresses are zeros (not considered).")
             self.yz_shear_strain = 0
             self.xz_shear_strain = 0
+            self.z_normal_load = 0
             self.yz_shear_load = 0
             self.xz_shear_load = 0
+            self.z_normal_stress = 0
             self.yz_shear_stress = 0
             self.xz_shear_stress = 0
         
         if self.system == "s":
             print("Note: classical lamination theory and Kickhoff hypothesis are used.")
-            print("z strains are zeros (not considered).")
+            print("z stresses and strains are zeros (not considered).")
             self.z_normal_strain = 0
             self.yz_shear_strain = 0
             self.xz_shear_strain = 0
+            self.z_normal_load = 0
             self.yz_shear_load = 0
             self.xz_shear_load = 0
+            self.z_normal_stress = 0
             self.yz_shear_stress = 0
             self.xz_shear_stress = 0
             print("delta thm and moi are zeros (not considered).")

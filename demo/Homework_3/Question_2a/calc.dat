@@ -12,7 +12,7 @@
 # with the results in the question(2a).
 # 
 
-system = bulk
+system = laminate
 
 length    = 100E-3  # m
 width     = 25E-3   # m

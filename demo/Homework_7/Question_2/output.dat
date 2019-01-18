@@ -1,6 +1,6 @@
 Deform info.
 
-Version 1.2.1
+Version 1.4.0
 Calculation start.
 
 ===== ===== ===== ===== System ===== ===== ===== =====
@@ -20,7 +20,7 @@ Pr) Normal load resultants
 N_x = 0.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
 
 Pr) Bending moment resultants
-M_x = 20.0 N; M_y = 0.0 N; M_xy = 0.0 N;
+M_x = 20.0 Nm/m; M_y = 0.0 Nm/m; M_xy = 0.0 Nm/m;
 
 Pr) Strains
 epsilon_x = x_ns Pa; epsilon_y = y_ns Pa; gamma_xy = xy_ss Pa;
@@ -57,7 +57,7 @@ Pr) Normal load resultants
 N_x = 0.0 N/m; N_y = 0.0 N/m; N_xy = 0.0 N/m;
 
 Pr) Bending moment resultants
-M_x = 20.0 N; M_y = 0.0 N; M_xy = 0.0 N;
+M_x = 20.0 Nm/m; M_y = 0.0 Nm/m; M_xy = 0.0 Nm/m;
 
 Pr) Then solved strain vs load
 x_ns = -2.09626750968712E-19;
