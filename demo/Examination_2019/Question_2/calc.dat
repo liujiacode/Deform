@@ -1,0 +1,72 @@
+# Calculation inputs.
+#
+
+# 
+# Global definitions.
+# 
+system = laminate
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+rotate_deg = 45
+
+# 
+# F_1, F_2 and (F_3 == 0)
+# z_normal_load = 0
+# 
+x_normal_load = 15E3  # N
+y_normal_load = 15E3  # N 
+
+# 
+# sigma_1, sigma_2 and (sigma_3 == 0)
+# z_normal_stress = 0
+# 
+x_normal_stress = unknown # Pa
+y_normal_stress = unknown # Pa
+
+# 
+# epsilon_1, epsilon_2 and (epsilon_3 != 0)
+# z_normal_strain = unknown
+# 
+x_normal_strain = unknown
+y_normal_strain = unknown
+
+# 
+# (F_yz, F_xz == 0) and F_xy
+# yz_shear_load = 0
+# xz_shear_load = 0
+# 
+xy_shear_load = unknown  # N
+
+# 
+# (tau_yz, tau_xz == 0) and tau_xy
+# yz_shear_stress = 0
+# xz_shear_stress = 0
+# 
+xy_shear_stress = unknown # Pa
+
+# 
+# (gamma_yz, gamma_xz == 0) and gamma_xy
+# yz_shear_strain = 0
+# xz_shear_strain = 0
+# 
+xy_shear_strain = 0.005235983333333333
+
+# 
+# Constrain conditions here.
+# These variables may not work well when system is stacking.
+# Recommend False in stacking system.
+# 
+# constrain_x = False
+# constrain_y = False
+# constrain_z = False
+
+# 
+# External conditions here.
+# These variables wouldn't work when system is stacking.
+# Recommend 0 in stacking system.
+# 
+delta_thm = 20 # C
+# delta_moi = 0 # %M

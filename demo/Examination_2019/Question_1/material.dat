@@ -1,0 +1,21 @@
+# properties for material graphite/epoxy.
+
+E_1 = 155.0E9 # Pa
+E_2 = 12.10E9 # Pa
+E_3 = 12.10E9 # Pa
+
+nu_23 = 0.458
+nu_13 = 0.248
+nu_12 = 0.248
+
+G_23 = 3.20E9 # Pa
+G_13 = 4.40E9 # Pa
+G_12 = 4.40E9 # Pa
+
+alpha_1 = -0.018E-6 # 1/C
+alpha_2 = 24.3E-6   # 1/C
+alpha_3 = 24.3E-6   # 1/C
+
+beta_1 = 146E-6  # %M
+beta_2 = 4770E-6 # %M
+beta_3 = 4770E-6 # %M

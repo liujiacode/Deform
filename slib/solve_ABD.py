@@ -186,7 +186,7 @@ def solve_ABD_matrix(c, m, op):
         epsilon_ys.append(epsilon_y)
         gamma_xys.append(gamma_xy)
 
-        op.part("off strain")
+        op.part("off strain (ref. chapter 6 P15)")
         op.text("off epsilon_x = {}.".format(epsilon_x))
         op.text("off epsilon_y = {}.".format(epsilon_y))
         op.text("off gamma_xy = {}.".format(gamma_xy))
@@ -200,7 +200,7 @@ def solve_ABD_matrix(c, m, op):
             op.draft("upper layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(upper_trQ)
-            op.text("[stress] = [trQ][strain]")
+            op.text("[stress] = [trQ][strain] (ref. chapter 5 P21)")
             op.draft("end")
             op.text("")
 
@@ -222,7 +222,7 @@ def solve_ABD_matrix(c, m, op):
             op.draft("lower layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(lower_trQ)
-            op.text("[stress] = [trQ][strain]")
+            op.text("[stress] = [trQ][strain] (ref. chapter 5 P21)")
             op.draft("end")
             op.text("")
 
@@ -260,13 +260,13 @@ def solve_ABD_matrix(c, m, op):
             op.draft("upper layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(T_matrix)
-            op.text("[1/2 strain] = [T][1/2 strain]")
+            op.text("[1/2 strain] = [T][1/2 strain] (ref. chapter 6 P23)")
             op.draft("end")
             op.text("")
             
-            op.text("on epsilon_x = {}.".format(strain[0, 0]))
-            op.text("on epsilon_y = {}.".format(strain[1, 0]))
-            op.text("on gamma_xy = {}.".format(strain[2, 0] * 2))
+            op.text("on epsilon_x (1) = {}.".format(strain[0, 0]))
+            op.text("on epsilon_y (2) = {}.".format(strain[1, 0]))
+            op.text("on gamma_xy (12) = {}.".format(strain[2, 0] * 2))
             op.text("")
         
         if i < len(c.thickness) - 1:
@@ -284,13 +284,13 @@ def solve_ABD_matrix(c, m, op):
             op.draft("lower layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(T_matrix)
-            op.text("[1/2 strain] = [T][1/2 strain]")
+            op.text("[1/2 strain] = [T][1/2 strain] (ref. chapter 6 P23)")
             op.draft("end")
             op.text("")
 
-            op.text("on epsilon_x = {}.".format(strain[0, 0]))
-            op.text("on epsilon_y = {}.".format(strain[1, 0]))
-            op.text("on gamma_xy = {}.".format(strain[2, 0] * 2))
+            op.text("on epsilon_x (1) = {}.".format(strain[0, 0]))
+            op.text("on epsilon_y (2) = {}.".format(strain[1, 0]))
+            op.text("on gamma_xy (12) = {}.".format(strain[2, 0] * 2))
             op.text("")
         
         if i > 0:
@@ -308,13 +308,13 @@ def solve_ABD_matrix(c, m, op):
             op.draft("upper layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(T_matrix)
-            op.text("[stress] = [T][stress]")
+            op.text("[stress] = [T][stress] (ref. chapter 6 P23)")
             op.draft("end")
             op.text("")
 
-            op.text("on sigma_x = {}.".format(stress[0, 0]))
-            op.text("on sigma_y = {}.".format(stress[1, 0]))
-            op.text("on tau_xy = {}.".format(stress[2, 0]))
+            op.text("on sigma_x (1) = {}.".format(stress[0, 0]))
+            op.text("on sigma_y (2) = {}.".format(stress[1, 0]))
+            op.text("on tau_xy (12) = {}.".format(stress[2, 0]))
             op.text("")
         
         if i < len(c.thickness) - 1:
@@ -332,12 +332,12 @@ def solve_ABD_matrix(c, m, op):
             op.draft("lower layer info")
             op.text("theta = {}.".format(theta))
             op.matrix(T_matrix)
-            op.text("[stress] = [T][stress]")
+            op.text("[stress] = [T][stress] (ref. chapter 6 P23)")
             op.draft("end")
             op.text("")
 
-            op.text("on sigma_x = {}.".format(stress[0, 0]))
-            op.text("on sigma_y = {}.".format(stress[1, 0]))
-            op.text("on tau_xy = {}.".format(stress[2, 0]))
+            op.text("on sigma_x (1) = {}.".format(stress[0, 0]))
+            op.text("on sigma_y (2) = {}.".format(stress[1, 0]))
+            op.text("on tau_xy (12) = {}.".format(stress[2, 0]))
             op.text("")
             

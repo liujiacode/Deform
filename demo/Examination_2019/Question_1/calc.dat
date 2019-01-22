@@ -1,0 +1,70 @@
+# Calculation inputs.
+#
+
+# 
+# Global definitions.
+# 
+system = bulk
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+# 
+# F_1, F_2 and F_3
+# 
+x_normal_load = 20E3  # N
+y_normal_load = 0  # N
+z_normal_load = 0  # N
+
+# 
+# sigma_1, sigma_2 and sigma_3
+# 
+x_normal_stress = unknown # Pa
+y_normal_stress = unknown # Pa
+z_normal_stress = unknown # Pa
+
+# 
+# epsilon_1, epsilon_2 and epsilon_3
+# 
+x_normal_strain = unknown
+y_normal_strain = unknown
+z_normal_strain = unknown
+
+# 
+# F_yz, F_xz and F_xy
+# 
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
+xy_shear_load = 0  # N
+
+# 
+# tau_yz, tau_xz and tau_xy
+# 
+yz_shear_stress = unknown # Pa
+xz_shear_stress = unknown # Pa
+xy_shear_stress = unknown # Pa
+
+# 
+# gamma_yz, gamma_xz and gamma_xy
+# 
+yz_shear_strain = unknown
+xz_shear_strain = unknown
+xy_shear_strain = unknown
+
+# 
+# Constrain conditions here.
+# These variables may not work well when system is stacking.
+# Recommend False in stacking system.
+# 
+# constrain_x = False
+# constrain_y = False
+constrain_z = True
+
+# 
+# External conditions here.
+# These variables wouldn't work when system is stacking.
+# Recommend 0 in stacking system.
+# 
+delta_thm = 15 # C
+delta_moi = 3 # %M

@@ -1,0 +1,96 @@
+Deform info.
+
+Version 1.5.1
+Calculation start.
+
+===== ===== ===== ===== System ===== ===== ===== =====
+bulk.
+
+length    = 0.1 m;
+width     = 0.025 m;
+thickness = 0.004 m.
+
+===== ===== ===== ===== Solving S matrix ===== ===== ===== =====
+=== === Knowns and unknowns === ===
+Pr) Normal strains
+epsilon_x = x_ns; epsilon_y = y_ns; epsilon_z = 0;
+
+Pr) Normal loads
+F_x = 20000.0 N; F_y = 0.0 N; F_z = z_nl N;
+
+Pr) Normal stresses
+sigma_x = x_nr Pa; sigma_y = y_nr Pa; sigma_z = z_nr Pa;
+
+Pr) Shear strains
+gamma_yz = 0.0; gamma_xz = 0.0; gamma_xy = 0.0;
+
+Pr) Shear loads
+F_yz = yz_ss N; F_xz = xz_ss N; F_xy = xy_ss N;
+
+Pr) Shear stresses
+tau_yz = yz_sr Pa; tau_xz = xz_sr Pa; tau_xy = xy_sr Pa;
+
+Pr) Thermal conditions
+alpha_1 = -1.8e-08 1/C; alpha_2 = 2.43e-05 1/C; alpha_3 = 2.43e-05 1/C; delta_T = 15.0 C;
+
+Pr) Moisture conditions
+beta_1 = 0.000146 1/%M; beta_2 = 0.00477 1/%M; beta_3 = 0.00477 1/%M; delta_M = 3.0 %M;
+
+Pr) S_matrix (1/Pa)
+[ 6.452E-12   -1.600E-12   -1.600E-12    0.000E+00    0.000E+00    0.000E+00   ]
+[-1.600E-12    8.264E-11   -3.785E-11    0.000E+00    0.000E+00    0.000E+00   ]
+[-1.600E-12   -3.785E-11    8.264E-11    0.000E+00    0.000E+00    0.000E+00   ]
+[ 0.000E+00    0.000E+00    0.000E+00    3.125E-10    0.000E+00    0.000E+00   ]
+[ 0.000E+00    0.000E+00    0.000E+00    0.000E+00    2.273E-10    0.000E+00   ]
+[ 0.000E+00    0.000E+00    0.000E+00    0.000E+00    0.000E+00    2.273E-10   ]
+
+Pr) C_matrix (Pa)
+[ 1.578E+11    5.636E+09    5.636E+09    0.000E+00    0.000E+00    0.000E+00   ]
+[ 5.636E+09    1.551E+10    7.214E+09    0.000E+00    0.000E+00    0.000E+00   ]
+[ 5.636E+09    7.214E+09    1.551E+10    0.000E+00    0.000E+00    0.000E+00   ]
+[-0.000E+00   -0.000E+00   -0.000E+00    3.200E+09   -0.000E+00   -0.000E+00   ]
+[ 0.000E+00    0.000E+00    0.000E+00    0.000E+00    4.400E+09    0.000E+00   ]
+[ 0.000E+00    0.000E+00    0.000E+00    0.000E+00    0.000E+00    4.400E+09   ]
+
+=== === Solution === ===
+Pr) First solve stress vs load
+xy_sr = 0.0;
+xz_sr = 0.0;
+yz_sr = 0.0;
+z_nl = 0.0025*z_nr;
+y_nr = 0.0;
+x_nr = 200000000.000000;
+
+Pr) Normal stresses
+sigma_x = 200000000.000000 Pa; sigma_y = 0.0 Pa; sigma_z = z_nr Pa;
+
+Pr) Shear stresses
+tau_yz = 0.0 Pa; tau_xz = 0.0 Pa; tau_xy = 0.0 Pa;
+
+Pr) Then solved strain vs stress
+x_ns = 0.00200595570064516;
+xy_ss = 0.0;
+xz_ss = 0.0;
+y_ns = 0.0209288610000000;
+yz_ss = 0.0;
+z_nr = -173689450.000000;
+
+Pr) Normal strains
+epsilon_x = 0.00200595570064516; epsilon_y = 0.0209288610000000; epsilon_z = 0;
+
+Pr) Shear strains
+gamma_yz = 0.0; gamma_xz = 0.0; gamma_xy = 0.0;
+
+===== ===== ===== ===== Final size ===== ===== ===== =====
+=== === Final length === ===
+length    = 0.100200595570065 m;
+widht     = 0.0255232215250000 m;
+thickness = 0.004 m;
+
+=== === Final angle === ===
+yz angle = 90 deg;
+xz angle = 90 deg;
+xy angle = 90 deg;
+
+===== ===== ===== ===== End ===== ===== ===== =====
+Have a nice day.
