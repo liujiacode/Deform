@@ -19,13 +19,21 @@ length    = 100E-3  # m
 width     = 25E-3   # m
 thickness = 4E-3    # m
 
-rotate_deg = 30
+rotate_deg = 30 # deg
+
+delta_moi = 0.3 # %M
+delta_thm = 20 # C
 
 constrain_y = True
 
-delta_moi = 0.3 # %M
-
+# 
+# constrain_y would set y_normal_load to unknown and set y_normal_strain to zero
+# automatically regardless of the fllowing setting of y_normal_load.
+#
 x_normal_load = 10E3 # N
 y_normal_load = 0    # N
+z_normal_load = 0    # N
 
+yz_shear_load = 0  # N
+xz_shear_load = 0  # N
 xy_shear_load = 0  # N

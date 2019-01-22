@@ -249,6 +249,7 @@ class Calc(object):
         if self.system == "l":
             print("Note: plane stress and strain conditions are used.")
             print("z stresses are zeros (not considered).")
+            self.z_normal_strain = Symbol("z_ns")
             self.yz_shear_strain = 0
             self.xz_shear_strain = 0
             self.z_normal_load = 0

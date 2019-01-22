@@ -1,6 +1,6 @@
 Deform info.
 
-Version 1.2.1
+Version 1.5.0
 Calculation start.
 
 ===== ===== ===== ===== System ===== ===== ===== =====
@@ -22,10 +22,10 @@ Pr) Normal stresses
 sigma_x = x_nr Pa; sigma_y = y_nr Pa;
 
 Pr) Shear strains
-gamma_xy = 0.0;
+gamma_xy = xy_ss;
 
 Pr) Shear loads
-F_xy = xy_ss N;
+F_xy = 0.0 N;
 
 Pr) Shear stresses
 tau_xy = xy_sr Pa;
@@ -33,25 +33,58 @@ tau_xy = xy_sr Pa;
 Pr) Rotate degree
 theta = 30.0 deg;
 
-Pr) Moisture conditions
-beta_1 = 0.000434 1/%M; beta_2 = 0.00632 1/%M; delta_M = 0.3 %M;
+Pr) M = cos theta
+m = 0.8660254037844387;
 
-Pr) Reduced S_matrix (Pa)
+Pr) N = sin theta
+n = 0.49999999999999994;
+
+Pr) Thermal conditions
+alpha_1 = 6.34e-06 1/C;
+alpha_2 = 2.33e-05 1/C;
+
+alpha_x = m ^ 2 * alpha_1 + n ^ 2 * alpha_2 = 1.058e-05 1/C;
+alpha_y = n ^ 2 * alpha_1 + m ^ 2 * alpha_2 = 1.9060000000000004e-05 1/C;
+alpha_xy = 2(alpha_1 - alpha_2)mn = -1.468779084818408e-05 1/C;
+
+delta_T = 20.0 C;
+
+Pr) Moisture conditions
+beta_1 = 0.000434 1/%M;
+beta_2 = 0.00632 1/%M;
+
+beta_x = m ^ 2 * beta_1 + n ^ 2 * beta_2 = 0.0019054999999999996 1/%M;
+beta_y = n ^ 2 * beta_1 + m ^ 2 * beta_2 = 0.004848500000000001 1/%M;
+beta_xy = 2(beta_1 - beta_2)mn = -0.005097425526675205 1/%M;
+
+delta_M = 0.3 %M;
+
+Pr) Reduced S_matrix (1/Pa)
 [ 2.000E-11   -5.080E-12    0.000E+00   ]
 [-5.080E-12    6.579E-11    0.000E+00   ]
 [ 0.000E+00    0.000E+00    2.128E-10   ]
 
-Pr) Reduced Q_matrix (1/Pa)
+Pr) Reduced Q_matrix (Pa)
 [ 5.100E+10    3.938E+09    0.000E+00   ]
 [ 3.938E+09    1.550E+10    0.000E+00   ]
 [ 0.000E+00    0.000E+00    4.700E+09   ]
 
-Pr) Transformed reduced S_matrix (Pa)
+Pr) Transformation matrix
+[ 7.500E-01    2.500E-01    8.660E-01   ]
+[ 2.500E-01    7.500E-01   -8.660E-01   ]
+[-4.330E-01    4.330E-01    5.000E-01   ]
+
+Pr) Inversed transformation matrix
+[ 7.500E-01    2.500E-01   -8.660E-01   ]
+[ 2.500E-01    7.500E-01    8.660E-01   ]
+[ 4.330E-01   -4.330E-01    5.000E-01   ]
+
+Pr) Transformed reduced S_matrix (1/Pa)
 [ 5.335E-11   -2.698E-11   -4.512E-11   ]
 [-2.698E-11    7.625E-11    5.464E-12   ]
 [-4.512E-11    5.464E-12    1.252E-10   ]
 
-Pr) Transformed reduced Q_matrix (1/Pa)
+Pr) Transformed reduced Q_matrix (Pa)
 [ 3.466E+10    1.141E+10    1.200E+10   ]
 [ 1.141E+10    1.691E+10    3.374E+09   ]
 [ 1.200E+10    3.374E+09    1.217E+10   ]
@@ -69,23 +102,42 @@ Pr) Shear stresses
 tau_xy = 0.0 Pa;
 
 Pr) Then solved strain vs stress
-x_ns = 0.00518130961805314;
-xy_ss = -0.00445439621893494;
-y_nr = 10522749.1431546;
+x_ns = 0.00581303720954790;
+xy_ss = -0.00627306189745199;
+y_nr = 11312962.8639610;
 
 Pr) Normal strains
-epsilon_x = 0.00518130961805314; epsilon_y = 0;
+epsilon_x = 0.00581303720954790; epsilon_y = 0;
 
 Pr) Shear strains
-gamma_xy = -0.00445439621893494;
+gamma_xy = -0.00627306189745199;
+
+Pr) Thirdly solve special z strains (ref. chapter conti. 5, P6)
+epsilon_z = alpha_3 * delta_T + beta_3 * delta_M + (S_13 * m ^ 2 + S_23 * n ^ 2)  * sigma_x + (S_13 * n ^ 2 + S_23 * m ^ 2) * sigma_y + 2(S_13 - S_23) * mn * tau_xy
+
+Pr) Thermal conditions
+alpha_3 = 2.33e-05 1/C; delta_T = 20.0 C;
+
+Pr) Moisture conditions
+beta_3 = 0.00632 1/%M; delta_M = 0.3 %M;
+
+Pr) Partical S_matrix
+S_13 = -5.08e-12 1/Pa;
+S_23 = -2.8157894736842103e-11 1/Pa;
+
+Pr) Z strains
+epsilon_z = 0.00102377325562780;
 
 ===== ===== ===== ===== Final size ===== ===== ===== =====
 === === Final length === ===
-length    = 0.100518130961805 m;
+length    = 0.100581303720955 m;
 widht     = 0.025 m;
 
 === === Final angle === ===
-xy angle = 89.7447818963760 deg;
+xy angle = 89.6405800286517 deg;
+
+=== === Final z === ===
+thickness = 0.00400409509302251 m;
 
 ===== ===== ===== ===== End ===== ===== ===== =====
 Have a nice day.

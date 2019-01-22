@@ -68,11 +68,11 @@ def solve_S_matrix(c, m, op):
         op.text("delta_M = {} %M;".format(c.delta_moi))
         op.text("")
 
-    op.part("S_matrix (Pa)")
+    op.part("S_matrix (1/Pa)")
     S_matrix = m.get_S_matrix()
     op.matrix(S_matrix)
     op.text("")
-    op.part("C_matrix (1/Pa)")
+    op.part("C_matrix (Pa)")
     C_matrix = m.get_C_matrix()
     op.matrix(C_matrix)
     op.text("")

@@ -20,7 +20,7 @@ delta_moi = 3 # %M
 constrain_x = True
 
 # 
-# constrain_y would set y_normal_load to unknown and set y_normal_strain to zero
+# constrain_x would set x_normal_load to unknown and set x_normal_strain to zero
 # automatically regardless of the fllowing setting of y_normal_load.
 #
 x_normal_load = 0    # N

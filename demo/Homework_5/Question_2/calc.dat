@@ -1,0 +1,26 @@
+# Calculation inputs.
+# 
+# Homework 5.
+# Question 2.
+# 
+# A laminate of graphite/epoxy laminate ( Vf  = 60%) has fibers oriented at
+# angle of 30 with respect to x axis. It has the dimensions of L=100mm, w=25mm
+# and t=4mm. It is subjected to the following loading condition:
+# Uniaxial extension in the x direction of 0.05mm,
+# Constrained in the y direction
+# Has a reduction in the angle at lower left hand corner of 0.06
+# Find the stress in the plate and also its final thickness (Assume plane stress condition)
+# 
+
+system = laminate
+
+length    = 100E-3  # m
+width     = 25E-3   # m
+thickness = 4E-3    # m
+
+rotate_deg = 30
+
+x_normal_strain = 0.0005
+y_normal_strain = 0
+
+xy_shear_strain = 0.0010471966666666666
