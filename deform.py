@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Running deformation calc.
 #
-# Version 1.4.0
+# Version 1.5.1
 # 2019.01.16
 #
 # Author: Liu Jia

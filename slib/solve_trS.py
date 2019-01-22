@@ -69,6 +69,8 @@ def solve_trS_matrix(c, m, op):
         op.text("")
         op.text("delta_T = {} C;".format(c.delta_thm))
         op.text("")
+    else:
+        alpha_x = alpha_y = alpha_xy = 0
 
     if c.delta_moi:
         op.part("moisture conditions")
@@ -84,6 +86,8 @@ def solve_trS_matrix(c, m, op):
         op.text("")
         op.text("delta_M = {} %M;".format(c.delta_moi))
         op.text("")
+    else:
+        beta_x = beta_y = beta_xy = 0
 
     op.part("reduced S_matrix (1/Pa)")
     rS_matrix = m.get_reduced_S_matrix()

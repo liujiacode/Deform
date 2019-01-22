@@ -10,53 +10,47 @@ length    = 100E-3  # m
 width     = 25E-3   # m
 thickness = 4E-3    # m
 
-rotate_deg = 0
-
 # 
-# x_normal_load is corresponding to the load along 1 direction in bulk and laminate with theta = 0;
-# y_normal_load is corresponding to the load along 2 direction in bulk and laminate with theta = 0;
-# z_normal_load is corresponding to the load along 3 direction in bulk and laminate with theta = 0.
+# F_1, F_2 and F_3
 # 
-# The unit of load is N when system is bulk or laminate (representing foreces),
-# while it is N/m when system is stacking (representing forces).
-# 
-# The z strains would be ignored when system is laminate.
-#
-x_normal_load = unknown  # N or N/m
-y_normal_load = unknown  # N or N/m
+x_normal_load = unknown  # N
+y_normal_load = unknown  # N
 z_normal_load = unknown  # N
 
+# 
+# sigma_1, sigma_2 and sigma_3
+# 
 x_normal_stress = unknown # Pa
 y_normal_stress = unknown # Pa
 z_normal_stress = unknown # Pa
 
+# 
+# epsilon_1, epsilon_2 and epsilon_3
+# 
 x_normal_strain = unknown
 y_normal_strain = unknown
 z_normal_strain = unknown
 
+# 
+# F_yz, F_xz and F_xy
+# 
 yz_shear_load = unknown  # N
 xz_shear_load = unknown  # N
-xy_shear_load = unknown  # N or N/m
+xy_shear_load = unknown  # N
 
+# 
+# tau_yz, tau_xz and tau_xy
+# 
 yz_shear_stress = unknown # Pa
 xz_shear_stress = unknown # Pa
 xy_shear_stress = unknown # Pa
 
+# 
+# gamma_yz, gamma_xz and gamma_xy
+# 
 yz_shear_strain = unknown
 xz_shear_strain = unknown
 xy_shear_strain = unknown
-
-# 
-# For stacking system.
-# These variables wouldn't work when system is bulk or laminate.
-# 
-# x_bending_moment   = unknown  # Nm/m
-# y_bending_moment   = unknown  # Nm/m
-# xy_twisting_moment = unknown  # Nm/m
-# 
-# x_surface_curvature   = unknown  # 1/m
-# y_surface_curvature   = unknown  # 1/m
-# xy_twisting_curvature = unknown  # 1/m
 
 # 
 # Constrain conditions here.

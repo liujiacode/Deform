@@ -2,7 +2,7 @@
 This is a script used to compute composite material properties.
 
 # Version
-1.5.0 (2019.01.22).
+1.5.1 (2019.01.22).
 
 ## Installization
 python 3.6 or later.
@@ -21,6 +21,7 @@ python 3.6 or later.
 * v1.3.1: Update demo. (2019.01.16)
 * v1.4.0: Fix z strains. (2019.01.18)
 * v1.5.0: Add z strains in laminate condition. Fix extentions off axis. Update demos. (2019.01.22)
+* v1.5.1: Fix extentions off axis. (2019.01.22)
 
 ## Author
 Liu Jia

@@ -1,0 +1,57 @@
+# Calculation inputs.
+#
+
+# 
+# Global definitions.
+# 
+system = stacking
+
+length    = 100E-3   # m
+width     = 25E-3    # m
+thickness = 0.15E-3  # m
+
+rotate_deg = 90 / 0 / 0 / 90  # deg
+
+# 
+# sigma_x, sigma_y and tau_xy
+# 
+x_normal_stress = unknown  # Pa
+y_normal_stress = unknown  # Pa
+xy_shear_stress = unknown  # Pa
+
+# 
+# N_x, N_y and N_xy
+# 
+x_normal_load = unknown  # N/m
+y_normal_load = unknown  # N/m
+xy_shear_load = unknown  # N/m
+
+# 
+# epsilon_x, epsilon_y and gamma_xy
+# 
+x_normal_strain = unknown
+y_normal_strain = unknown
+xy_shear_strain = unknown
+
+# 
+# M_x, M_y and M_xy
+# 
+x_bending_moment   = unknown  # Nm/m
+y_bending_moment   = unknown  # Nm/m
+xy_twisting_moment = unknown  # Nm/m
+
+# 
+# kappa_x, kappa_y and kappa_xy
+# 
+x_surface_curvature   = unknown  # 1/m
+y_surface_curvature   = unknown  # 1/m
+xy_twisting_curvature = unknown  # 1/m
+
+# 
+# Constrain conditions here.
+# These variables may not work well when system is stacking.
+# Recommend False in stacking system.
+# 
+# constrain_x = False
+# constrain_y = False
+# constrain_z = False
